@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageTransition from './components/PageTransition';
-import ParticleBackground from './components/ParticleBackground';
+import ParticleField from './components/ParticleField';
 import NoiseOverlay from './components/NoiseOverlay';
 
 import Home from './Home';
@@ -19,7 +19,7 @@ function App() {
     <Router>
       <div className="relative flex flex-col min-h-screen text-slate-100 bg-gray-950 selection:bg-cyan-400/30 selection:text-white">
         <NoiseOverlay />
-        <ParticleBackground />
+        <ParticleField />
         <Navbar />
         <main className="grow relative z-10">
           <Routes>
