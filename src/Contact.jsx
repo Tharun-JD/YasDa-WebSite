@@ -1,111 +1,139 @@
-import React, { useEffect, useRef } from 'react';
-import anime from 'animejs';
+import React, { useEffect } from 'react';
 
 const Contact = () => {
-  const formRef = useRef(null);
-  const infoRef = useRef(null);
-
   useEffect(() => {
-    anime({
-      targets: [infoRef.current, formRef.current],
-      opacity: [0, 1],
-      translateY: [40, 0],
-      duration: 1000,
-      delay: anime.stagger(300),
-      easing: 'easeOutExpo'
-    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 80);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.observe-section').forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-          Get In Touch
-        </h2>
-        <p className="mt-4 text-xl text-gray-600">
-          We'd love to hear from you. Drop us a line!
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div ref={infoRef} className="opacity-0 bg-blue-600 rounded-3xl p-10 text-white shadow-xl flex flex-col justify-between">
-          <div>
-            <h3 className="text-3xl font-bold mb-6">Contact Information</h3>
-            <p className="text-blue-100 mb-8 max-w-sm">
-              Fill up the form and our Team will get back to you within 24 hours.
+    <div className="bg-black text-white min-h-screen pt-32 pb-40 selection:bg-cyan-400 selection:text-black">
+      {/* Contact Hero */}
+      <section className="relative py-24 px-6 observe-section overflow-hidden">
+        {/* Animated Background Text */}
+        <div className="absolute top-0 right-0 text-[30vw] font-black text-white/3 italic pointer-events-none uppercase leading-none translate-x-1/4 -translate-y-1/4 animate-spin-slow">
+           INIT
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="reveal-left max-w-5xl">
+            <span className="text-cyan-400 font-black text-xs tracking-[1em] uppercase mb-8 block font-mono">STATION: CONNECT / ALPHA_092</span>
+            <h1 className="text-7xl md:text-[18vw] font-black text-white mb-8 tracking-tighter uppercase italic leading-[0.7]">
+               INITIATE <br /> <span className="text-cyan-400">MISSION.</span>
+            </h1>
+            <p className="text-gray-500 text-xl md:text-3xl font-black uppercase tracking-tight max-w-3xl leading-none reveal stagger-1">
+               WE ONLY DEPLOY TO PROJECTS WITH RADIATED IMPACT. CLEAR YOUR VISION. SEND YOUR SIGNAL.
             </p>
-            
-            <div className="space-y-6">
-              <div className="flex items-center">
-                <span className="text-2xl mr-4">📞</span>
-                <span className="text-lg">+1 (234) 567-8910</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-2xl mr-4">📧</span>
-                <span className="text-lg">hello@yasda.com</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-2xl mr-4">📍</span>
-                <span className="text-lg">123 Innovation Drive,<br/>Tech City, TC 10101</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-12 flex space-x-6">
-            <a href="#" className="hover:text-blue-200 transition-colors text-2xl">📱</a>
-            <a href="#" className="hover:text-blue-200 transition-colors text-2xl">💼</a>
-            <a href="#" className="hover:text-blue-200 transition-colors text-2xl">📸</a>
           </div>
         </div>
+      </section>
 
-        <div ref={formRef} className="opacity-0 bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                <input 
-                  type="text" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                  placeholder="John"
-                />
+      {/* Industrial Form Section */}
+      <section className="px-6 observe-section relative">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-24">
+           {/* Left Info */}
+           <div className="lg:col-span-5 reveal-left">
+              <div className="space-y-24">
+                 <div>
+                    <h3 className="text-xs font-black text-cyan-400 tracking-[0.5em] mb-8 uppercase">DIRECT COMMAND</h3>
+                    <div className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter hover:text-cyan-400 transition-colors">
+                       COMMAND@YASDA.COM
+                    </div>
+                 </div>
+                 <div>
+                    <h3 className="text-xs font-black text-cyan-400 tracking-[0.5em] mb-8 uppercase">GLOBAL RECEPTION</h3>
+                    <div className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter">
+                       +1 800-FORGE-IT
+                    </div>
+                 </div>
+                 <div>
+                    <h3 className="text-xs font-black text-cyan-400 tracking-[0.5em] mb-8 uppercase">BASE COORDS</h3>
+                    <div className="text-gray-400 text-xl font-bold uppercase tracking-tight leading-relaxed">
+                       SOCIETY COMPLEX / SECTOR 7<br />
+                       INDUSTRIAL ZONE X / SOUTH ASIA<br />
+                       34.211° N / -118.490° W
+                    </div>
+                 </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                <input 
-                  type="text" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                  placeholder="Doe"
-                />
+              
+              {/* Industrial Decorations */}
+              <div className="mt-32 pt-12 border-t border-white/10 hidden lg:block">
+                 <div className="flex gap-4">
+                    <div className="w-12 h-1 bg-cyan-400" />
+                    <div className="w-12 h-1 bg-white/20" />
+                    <div className="w-12 h-1 bg-white/20" />
+                 </div>
               </div>
-            </div>
+           </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <input 
-                type="email" 
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                placeholder="john@example.com"
-              />
-            </div>
+           {/* Right Form */}
+           <div className="lg:col-span-7 reveal-right">
+              <form className="bg-white/5 p-8 md:p-16 border border-white/10 relative overflow-hidden">
+                 {/* Blueprint Accents */}
+                 <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-cyan-400/20" />
+                 <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-cyan-400/20" />
+                 
+                 <div className="space-y-12">
+                     <div className="group border-b-2 border-white/10 focus-within:border-cyan-400 transition-colors pb-4">
+                        <label className="text-[10px] font-black tracking-widest text-cyan-400 uppercase mb-4 block">IDENTIFIER / NAME</label>
+                        <input 
+                           type="text" 
+                           placeholder="REQUIRED"
+                           className="w-full bg-transparent border-none text-3xl font-black uppercase italic tracking-tighter focus:outline-none placeholder:text-white/10"
+                        />
+                     </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-              <textarea 
-                rows="4"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
-                placeholder="How can we help you?"
-              ></textarea>
-            </div>
+                     <div className="group border-b-2 border-white/10 focus-within:border-cyan-400 transition-colors pb-4">
+                        <label className="text-[10px] font-black tracking-widest text-cyan-400 uppercase mb-4 block">SIGNAL / EMAIL</label>
+                        <input 
+                           type="email" 
+                           placeholder="REQUIRED"
+                           className="w-full bg-transparent border-none text-3xl font-black uppercase italic tracking-tighter focus:outline-none placeholder:text-white/10"
+                        />
+                     </div>
 
-            <button 
-              type="submit" 
-              className="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
-            >
-              Send Message
-            </button>
-          </form>
+                     <div className="group border-b-2 border-white/10 focus-within:border-cyan-400 transition-colors pb-4">
+                        <label className="text-[10px] font-black tracking-widest text-cyan-400 uppercase mb-4 block">INTENT / MESSAGE</label>
+                        <textarea 
+                           rows="4"
+                           placeholder="INITIALIZE BRIEFING..."
+                           className="w-full bg-transparent border-none text-3xl font-black uppercase italic tracking-tighter focus:outline-none placeholder:text-white/10 resize-none"
+                        ></textarea>
+                     </div>
+
+                     <button className="w-full bg-white text-black py-8 font-black text-2xl uppercase tracking-tighter hover:bg-cyan-400 transition-all duration-500 scale-100 active:scale-95 group relative overflow-hidden">
+                        <span className="relative z-0">TRANSMIT DATA</span>
+                        <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0" />
+                        <span className="absolute inset-0 flex items-center justify-center text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">AUTHENTICATING...</span>
+                     </button>
+                 </div>
+              </form>
+              
+              <div className="mt-12 text-[10px] font-black tracking-[0.5em] text-white/20 uppercase text-center lg:text-right">
+                 ENCRYPTION: AES-256 / SHA-2 / TLS 1.3
+              </div>
+           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Footer Industrial Accent */}
+      <section className="py-48 px-6 text-center observe-section">
+         <div className="max-w-7xl mx-auto reveal-scale">
+             <div className="text-[15vw] font-black text-white opacity-5 italic leading-none whitespace-nowrap overflow-hidden">
+                COMMAND CENTER COMMAND CENTER COMMAND CENTER
+             </div>
+         </div>
+      </section>
     </div>
   );
 };
