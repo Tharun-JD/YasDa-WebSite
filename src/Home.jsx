@@ -249,7 +249,7 @@ const Home = () => {
               { icon: "02", title: "Cloud Dominance", desc: "Absolute orchestration and redundancy across multi-cloud and bare-metal clusters." },
               { icon: "03", title: "Industrial AI", desc: "Integrating neural inspection models into 18+ precision manufacturing machines." },
               { icon: "04", title: "DevOps Ops", desc: "Deploying autonomous delivery pipelines with 99.99% system availability." }
-            ].map((s, i) => (
+            ].map((s) => (
               <div key={s.title} className="p-12 border-r border-b border-black/10 hover:bg-cyan-400 group transition-all duration-500 reveal-scale">
                 <div className="text-4xl font-black mb-8 opacity-20 group-hover:opacity-100 transition-opacity">{s.icon}</div>
                 <h3 className="text-2xl font-black uppercase italic mb-4 tracking-tighter">{s.title}</h3>
@@ -271,7 +271,7 @@ const Home = () => {
             { end: 120, label: "NODES MANAGED", suffix: "" },
             { end: 99.99, label: "UPTIME RECORD", suffix: "%" },
             { end: 18, label: "MACHINES SYNCED", suffix: "+" }
-          ].map((stat, i) => (
+          ].map((stat) => (
             <div key={stat.label} className="text-center md:text-left reveal-scale group">
               <div className="text-8xl md:text-9xl font-black italic tracking-tighter text-white group-hover:text-cyan-400 transition-colors">
                 <CountUp end={stat.end} suffix={stat.suffix} />

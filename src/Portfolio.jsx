@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import anime from 'animejs';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CountUp from './components/CountUp';
 import portfolioNexus from './assets/portfolio_nexus.png';
@@ -109,7 +108,7 @@ const Portfolio = () => {
             <div className="reveal-left max-w-4xl">
               <span className="text-cyan-400 font-black text-xs tracking-[1em] uppercase mb-8 block">PROJECTS / DEPLOYMENTS</span>
               <h1 className="text-7xl md:text-[14vw] font-black text-white mb-8 tracking-tighter uppercase italic leading-[0.7]">
-                HARDENED <br /> <span className="text-white border-b-[20px] border-white">OUTPUT.</span>
+                HARDENED <br /> <span className="text-white border-b-20 border-white">OUTPUT.</span>
               </h1>
             </div>
             <p className="text-gray-500 text-xl font-black uppercase italic tracking-tighter max-w-xs reveal-right">
@@ -148,7 +147,7 @@ const Portfolio = () => {
                 alt={project.title}
               />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-10 flex flex-col justify-end">
+              <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent p-10 flex flex-col justify-end">
                 <div className="translate-y-20 group-hover:translate-y-0 transition-transform duration-500">
                   <div className="text-cyan-400 font-black text-[10px] tracking-widest mb-4 uppercase">{project.id} / {project.category}</div>
                   <h3 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8 leading-none">{project.title}</h3>

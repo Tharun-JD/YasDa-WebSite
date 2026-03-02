@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import anime from 'animejs';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CountUp from './components/CountUp';
 
@@ -72,7 +71,7 @@ const About = () => {
           </div>
           
           <div className="reveal-right relative">
-            <div className="aspect-[4/5] bg-black p-12 flex flex-col justify-between group overflow-hidden">
+            <div className="aspect-4/5 bg-black p-12 flex flex-col justify-between group overflow-hidden">
                <div className="absolute inset-0 bg-cyan-400 translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
                <div className="relative z-10">
                   <div className="text-8xl font-black text-white mix-blend-difference mb-8">01</div>
@@ -99,7 +98,7 @@ const About = () => {
               { title: "PRECISION", icon: "SIGMA", desc: "Absolute zero-margin for error in mission-critical deployments." },
               { title: "SYNERGY", icon: "DELTA", desc: "Forging absolute vertical alignment with client infrastructure." },
               { title: "IMPACT", icon: "OMNI", desc: "Observable, measurable throughput gains in every project." }
-            ].map((p, i) => (
+            ].map((p) => (
               <div key={p.title} className="bg-white/5 p-12 reveal-scale border border-white/10 hover:border-cyan-400 group transition-all">
                 <div className="text-xs font-black text-cyan-400 mb-12 tracking-[0.5em] group-hover:translate-x-4 transition-transform">{p.icon}</div>
                 <h3 className="text-2xl font-black text-white mb-6 uppercase italic">{p.title}</h3>
@@ -112,7 +111,7 @@ const About = () => {
 
       {/* Timeline - Industrial Track */}
       <section className="py-32 observe-section relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[1px] bg-white/10 hidden md:block" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-px bg-white/10 hidden md:block" />
         
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-40">

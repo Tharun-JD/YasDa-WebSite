@@ -50,7 +50,7 @@ const Client = () => {
             <div className="reveal-left max-w-4xl">
               <span className="text-cyan-400 font-black text-xs tracking-[1em] uppercase mb-8 block">PARTNERS / TRUST</span>
               <h1 className="text-6xl md:text-[15vw] font-black text-white mb-8 tracking-tighter uppercase italic leading-[0.7]">
-                ELITE <br /> <span className="text-white border-b-[20px] border-white">FORCES.</span>
+                ELITE <br /> <span className="text-white border-b-20 border-white">FORCES.</span>
               </h1>
             </div>
             <p className="text-gray-500 text-xl font-black uppercase italic tracking-tighter max-w-xs reveal-right">
@@ -63,7 +63,7 @@ const Client = () => {
       {/* Industrial Testimonials */}
       <section className="px-6 observe-section">
         <div className="max-w-7xl mx-auto space-y-1">
-          {testimonials.map((t, i) => (
+          {testimonials.map((t) => (
             <div key={t.id} className="grid lg:grid-cols-12 bg-white/5 border border-white/10 reveal-scale hover:bg-cyan-400 hover:text-black transition-all duration-500 group">
                <div className="lg:col-span-2 p-12 border-b lg:border-b-0 lg:border-r border-white/10 group-hover:border-black transition-colors flex items-center justify-center">
                   <div className="text-[10px] font-black tracking-widest uppercase rotate-0 lg:-rotate-90 whitespace-nowrap">{t.id}</div>
