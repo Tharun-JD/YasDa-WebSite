@@ -102,7 +102,7 @@ const Navbar = () => {
             { to: '/portfolio', label: 'PORTFOLIO' },
             { to: '/client', label: 'CLIENTS' },
             { to: '/contact', label: 'CONNECT' }
-          ].map((item, idx) => (
+          ].map((item) => (
             <NavLink
               key={item.to}
               to={item.to}

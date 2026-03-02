@@ -8,7 +8,7 @@ import NoiseOverlay from './components/NoiseOverlay';
 import Home from './Home';
 import About from './About';
 import Services from './Services';
-import Portfolio from './Protfolio';
+import Portfolio from './Portfolio';
 import Client from './Client';
 import Contact from './Contact';
 

@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import anime from 'animejs';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceItem = ({ title, desc, icon, index }) => {
@@ -105,7 +104,7 @@ const Services = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {technologies.map((tech, i) => (
+            {technologies.map((tech) => (
               <div key={tech.name} className="flex flex-col items-center reveal-scale group">
                 <div className="text-xs font-black text-cyan-600 mb-8 tracking-[0.5em] group-hover:scale-125 transition-transform">{tech.icon}</div>
                 <div className="w-full aspect-square border-2 border-black flex items-center justify-center relative overflow-hidden group-hover:bg-black transition-colors">

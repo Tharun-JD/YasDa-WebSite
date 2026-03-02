@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import anime from 'animejs';
+import React, { useRef } from 'react';
 
 const GlowCard = ({ children, className = '' }) => {
   const cardRef = useRef(null);

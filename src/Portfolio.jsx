@@ -9,9 +9,6 @@ import portfolioBiotek from './assets/portfolio_biotek.png';
 import portfolioSynth from './assets/portfolio_synth.png';
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [glitching, setGlitching] = useState(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
