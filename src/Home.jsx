@@ -114,6 +114,32 @@ const Home = () => {
         duration: 1000,
         easing: 'easeOutQuad'
       });
+
+      anime({
+        targets: '.cta-core',
+        translateX: -xPos * 0.4,
+        translateY: -yPos * 0.4,
+        duration: 800,
+        easing: 'easeOutQuad'
+      });
+
+      anime({
+        targets: '.cta-ghost-1',
+        translateX: -xPos * 0.6,
+        translateY: -yPos * 0.6,
+        rotate: xPos * 0.1,
+        duration: 1200,
+        easing: 'easeOutElastic(1, .8)'
+      });
+
+      anime({
+        targets: '.cta-ghost-2',
+        translateX: -xPos * 0.2,
+        translateY: -yPos * 0.2,
+        scale: 1 + Math.abs(xPos) * 0.005,
+        duration: 2000,
+        easing: 'easeOutExpo'
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -283,10 +309,34 @@ const Home = () => {
       </section>
 
       {/* CTA - Final Impact */}
-      <section className="py-48 px-6 observe-section">
-        <div className="max-w-5xl mx-auto text-center reveal-scale">
+      <section className="py-48 px-6 observe-section relative">
+        {/* Glowing Background 'Y' - Triple Layer Cybernetic Transformation */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
+          {/* Layer 1: The Ghost (Chromatic Aberration) */}
+          <div className="cta-ghost-1 absolute flex items-center justify-center mix-blend-screen opacity-20">
+            <div className="text-[48vw] font-black italic uppercase select-none animate-shiver-fast text-cyan-400/30 leading-none">
+              Y
+            </div>
+          </div>
+          
+          {/* Layer 2: The Wireframe (Structural Blueprint) */}
+          <div className="cta-ghost-2 absolute flex items-center justify-center mix-blend-overlay">
+            <div className="text-[46vw] font-black italic uppercase select-none text-wireframe animate-pulse-glow leading-none">
+              Y
+            </div>
+          </div>
+
+          {/* Layer 3: The Core (Solid Impact) */}
+          <div className="cta-core absolute flex items-center justify-center">
+            <div className="text-[45vw] font-black italic uppercase select-none animate-glitch-subtle animate-scanline bg-clip-text text-transparent bg-gradient-to-b from-cyan-400 to-indigo-900 leading-none drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+              Y
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center reveal-scale relative z-10">
           <h2 className="text-6xl md:text-[10vw] font-black uppercase italic tracking-tighter leading-[0.8] mb-16">
-            READY TO <br /> <span className="text-cyan-400 animate-pulse-glow">REACH ALPHA?</span>
+            READY TO <br /> <span className="text-cyan-400 animate-pulse">REACH ALPHA?</span>
           </h2>
           <div className="flex flex-col md:flex-row justify-center gap-8">
              <Link to="/contact" className="px-16 py-8 bg-cyan-400 text-black font-black uppercase tracking-tighter text-xl hover:scale-105 transition-transform">

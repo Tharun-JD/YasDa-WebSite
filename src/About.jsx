@@ -70,14 +70,14 @@ const About = () => {
             </div>
           </div>
           
-          <div className="reveal-right relative">
-            <div className="aspect-4/5 bg-black p-12 flex flex-col justify-between group overflow-hidden">
-               <div className="absolute inset-0 bg-cyan-400 translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
+          <div className="reveal relative group">
+            <div className="aspect-4/5 bg-black p-12 flex flex-col justify-between overflow-hidden">
+               <div className="absolute inset-0 bg-cyan-400 translate-y-full group-[.visible]:translate-y-0 transition-transform duration-1000 ease-out" />
                <div className="relative z-10">
                   <div className="text-8xl font-black text-white mix-blend-difference mb-8">01</div>
                   <h3 className="text-3xl font-black text-white mix-blend-difference uppercase italic leading-none">RADICAL<br />ENGINEERING</h3>
                </div>
-               <div className="relative z-10 text-white/50 mix-blend-difference font-bold uppercase tracking-widest text-xs translate-y-20 group-hover:translate-y-0 transition-all delay-100">
+               <div className="relative z-10 text-white/50 mix-blend-difference font-bold uppercase tracking-widest text-xs translate-y-20 group-[.visible]:translate-y-0 transition-all duration-700 delay-300">
                   ESTABLISHED 2021 / HQ: SECTOR 7 / GLOBAL SCALE
                </div>
             </div>
@@ -120,19 +120,44 @@ const About = () => {
 
           <div className="space-y-40">
             {timeline.map((item, i) => (
-              <div key={item.year} className={`flex flex-col md:flex-row items-center gap-12 reveal ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                <div className="flex-1 text-center md:text-left">
-                   <div className={`text-[12vw] font-black leading-none italic opacity-5 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>{item.year}</div>
-                </div>
-                
-                <div className="w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_20px_#22d3ee] relative z-10 shrink-0">
-                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-cyan-400/20 rounded-full animate-ping" />
-                </div>
+              <div key={item.year} className="group reveal">
+                <div className="grid md:grid-cols-3 items-center gap-12 relative">
+                  {/* Left Column */}
+                  <div className={`flex flex-col ${i % 2 === 0 ? 'md:items-end md:text-right md:order-1' : 'md:items-start md:text-left md:order-3'}`}>
+                    {i % 2 === 0 ? (
+                      <>
+                        <h3 className="text-3xl font-black text-cyan-400 mb-4 uppercase italic tracking-tighter">{item.title}</h3>
+                        <p className="text-gray-400 text-lg font-bold leading-relaxed mb-4 uppercase tracking-tight max-w-sm">{item.description}</p>
+                        <div className="inline-block px-4 py-1 bg-white text-black text-[10px] font-black tracking-widest uppercase">{item.achievement}</div>
+                      </>
+                    ) : (
+                      <div className="text-[12vw] font-black leading-none italic text-white/5 transition-all duration-1000 group-[.visible]:text-cyan-400/8 group-[.visible]:drop-shadow-[0_0_30px_rgba(34,211,238,0.2)] select-none">
+                        {item.year}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Middle Column (Dot) */}
+                  <div className="flex justify-center items-center md:order-2 z-20">
+                    <div className="w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_20px_#22d3ee] relative">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-cyan-400/20 rounded-full animate-ping" />
+                    </div>
+                  </div>
 
-                <div className={`flex-1 ${i % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                   <h3 className="text-3xl font-black text-cyan-400 mb-4 uppercase italic tracking-tighter">{item.title}</h3>
-                   <p className="text-gray-400 text-lg font-bold leading-relaxed mb-6 uppercase tracking-tight">{item.description}</p>
-                   <div className="inline-block px-4 py-1 bg-white text-black text-[10px] font-black tracking-widest uppercase">{item.achievement}</div>
+                  {/* Right Column */}
+                  <div className={`flex flex-col ${i % 2 === 0 ? 'md:items-start md:text-left md:order-3' : 'md:items-end md:text-right md:order-1'}`}>
+                    {i % 2 === 0 ? (
+                      <div className="text-[12vw] font-black leading-none italic text-white/5 transition-all duration-1000 group-[.visible]:text-cyan-400/8 group-[.visible]:drop-shadow-[0_0_30px_rgba(34,211,238,0.2)] select-none">
+                        {item.year}
+                      </div>
+                    ) : (
+                      <>
+                        <h3 className="text-3xl font-black text-cyan-400 mb-4 uppercase italic tracking-tighter">{item.title}</h3>
+                        <p className="text-gray-400 text-lg font-bold leading-relaxed mb-4 uppercase tracking-tight max-w-sm">{item.description}</p>
+                        <div className="inline-block px-4 py-1 bg-white text-black text-[10px] font-black tracking-widest uppercase">{item.achievement}</div>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
