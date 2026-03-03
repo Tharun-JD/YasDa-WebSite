@@ -68,23 +68,38 @@ const Portfolio = () => {
     }
   ];
 
+  // Preload images for instant switching
+  useEffect(() => {
+    projects.forEach((p) => {
+      const img = new Image();
+      img.src = p.image;
+    });
+  }, []);
+
   const filteredProjects = filter === 'ALL' ? projects : projects.filter(p => p.category === filter);
 
   const handleFilterChange = (f) => {
-    // Glitch effect trigger
-    document.querySelector('.portfolio-grid').classList.add('glitch-active');
-    setTimeout(() => {
-      setFilter(f);
-      document.querySelector('.portfolio-grid').classList.remove('glitch-active');
-    }, 300);
+    setFilter(f);
   };
 
+  // When filter changes, ensure items are visible without delay
+  useEffect(() => {
+    const gridItems = document.querySelectorAll('.portfolio-item');
+    gridItems.forEach(el => {
+      el.classList.remove('opacity-0', 'scale-95');
+      // trigger reflow
+      void el.offsetWidth;
+      el.classList.add('opacity-100', 'scale-100', 'transition-all', 'duration-500');
+    });
+  }, [filter]);
+
+  // Remove the old IntersectionObserver for `.reveal-scale` as we'll handle it generically
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.reveal-scale').forEach((el, i) => {
-            setTimeout(() => el.classList.add('visible'), i * 100);
+          entry.target.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 80);
           });
         }
       });
@@ -135,11 +150,15 @@ const Portfolio = () => {
 
       {/* Cinematic Masonry Grid */}
       <section className="px-6 observe-section">
-        <div className="max-w-[1400px] mx-auto portfolio-grid grid md:grid-cols-2 gap-1 transition-opacity duration-300">
+        <div className="max-w-[1400px] mx-auto portfolio-grid grid md:grid-cols-2 gap-4 transition-opacity duration-300">
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id} 
-              className={`relative aspect-square group overflow-hidden bg-white/5 reveal-scale ${index === 0 ? 'md:col-span-2 md:aspect-21/9' : ''}`}
+              className={`portfolio-item relative aspect-square group overflow-hidden bg-white/5 opacity-0 scale-95 ${
+                 filteredProjects.length % 2 !== 0 && index === filteredProjects.length - 1 
+                   ? 'md:col-span-2 md:w-[calc(50%-0.5rem)] md:mx-auto' 
+                   : ''
+              }`}
             >
               <img 
                 src={project.image} 

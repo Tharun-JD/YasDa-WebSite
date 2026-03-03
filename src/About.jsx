@@ -77,9 +77,9 @@ const About = () => {
                   <div className="text-8xl font-black text-white mix-blend-difference mb-8">01</div>
                   <h3 className="text-3xl font-black text-white mix-blend-difference uppercase italic leading-none">RADICAL<br />ENGINEERING</h3>
                </div>
-               <div className="relative z-10 text-white/50 mix-blend-difference font-bold uppercase tracking-widest text-xs translate-y-20 group-[.visible]:translate-y-0 transition-all duration-700 delay-300">
+               {/* <div className="relative z-10 text-white/50 mix-blend-difference font-bold uppercase tracking-widest text-xs translate-y-20 group-[.visible]:translate-y-0 transition-all duration-700 delay-300">
                   ESTABLISHED 2021 / HQ: SECTOR 7 / GLOBAL SCALE
-               </div>
+               </div> */}
             </div>
           </div>
         </div>
