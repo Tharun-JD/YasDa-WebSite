@@ -30,8 +30,8 @@ class Particle {
     // Elastic spring for bouncy mouse interaction
     this.targetX = this.x;
     this.targetY = this.y;
-    this.spring = 0.05 + Math.random() * 0.05;
-    this.friction = 0.90 + Math.random() * 0.05;
+    this.spring = 0.02 + Math.random() * 0.02; // Reduced spring strength
+    this.friction = 0.85 + Math.random() * 0.05; // More friction to kill bounce
     this.vx = 0;
     this.vy = 0;
   }
@@ -64,8 +64,8 @@ class Particle {
       if (distance < mouse.radius) {
         // Push particles away from mouse
         let force = (mouse.radius - distance) / mouse.radius;
-        // Bouncy scatter factor
-        let scatter = force * 60; 
+        // Extremely subtle bounce scatter multiplier
+        let scatter = force * 12; 
         targetX = this.baseX - (dx / distance) * scatter;
         targetY = this.baseY - (dy / distance) * scatter;
       }
@@ -131,7 +131,7 @@ const ParticleField = () => {
 
     let particles = [];
     const particleCount = Math.min(window.innerWidth / 5, 250); // Responsive dense count
-    const mouse = { x: null, y: null, radius: 150 };
+    const mouse = { x: null, y: null, radius: 80 }; // Reduced radius
 
     const resize = () => {
       canvas.width = window.innerWidth;

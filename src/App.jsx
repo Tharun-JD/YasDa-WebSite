@@ -17,19 +17,28 @@ import Contact from './Contact';
 import './index.css';
 
 function App() {
-  const [loading, setLoading] = useState(() => !sessionStorage.getItem('yasda_visited'));
+  const [loading, setLoading] = useState(() => 
+    sessionStorage.getItem('yasda_visited') ? null : 'initial'
+  );
 
   const handlePreloaderComplete = () => {
     sessionStorage.setItem('yasda_visited', 'true');
-    setLoading(false);
+    setLoading(null);
   };
 
-  const triggerPreloader = () => setLoading(true);
+  const triggerPreloader = (mode = 'nav') => {
+    setLoading(mode);
+  };
 
   return (
     <Router>
       <div className="relative flex flex-col min-h-screen text-slate-100 bg-gray-950 selection:bg-cyan-400/30 selection:text-white overflow-x-hidden">
-        {loading && <Preloader onComplete={handlePreloaderComplete} />}
+        {loading && (
+          <Preloader 
+            onComplete={handlePreloaderComplete} 
+            mode={loading} 
+          />
+        )}
         
         {!loading && (
           <div className="relative isolate min-h-screen">
@@ -37,7 +46,7 @@ function App() {
             <div className="fixed inset-0 z-0"><ParticleField /></div>
             
             <div className="relative z-10 flex flex-col min-h-screen">
-              <Navbar onLogoClick={triggerPreloader} />
+              <Navbar onNavClick={triggerPreloader} />
               <main className="grow">
                 <Routes>
                   <Route path="/" element={<PageTransition><Home /></PageTransition>} />

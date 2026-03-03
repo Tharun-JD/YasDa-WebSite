@@ -6,31 +6,44 @@ const ServiceItem = ({ title, desc, icon, index }) => {
   
   return (
     <div 
-      className="group border-b border-white/10 last:border-0 py-12 cursor-pointer overflow-hidden transition-all duration-300"
+      className={`group border-b border-white/10 last:border-0 py-12 cursor-pointer transition-all duration-700 relative ${isOpen ? 'bg-white/5' : ''}`}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 items-center gap-12 relative z-10">
-        <div className="md:col-span-1">
-          <span className="text-cyan-400 font-black text-4xl italic opacity-20 group-hover:opacity-100 transition-opacity">0{index + 1}</span>
+      <div className={`absolute left-0 top-0 bottom-0 w-1 bg-cyan-400 transition-transform duration-700 origin-top ${isOpen ? 'scale-y-100' : 'scale-y-0'}`} />
+
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 items-start gap-12 relative z-10">
+        <div className="md:col-span-1 pt-2">
+          <span className={`text-cyan-400 font-black text-4xl italic transition-all duration-700 ${isOpen ? 'opacity-100 translate-x-2' : 'opacity-20 translate-x-0'}`}>
+            0{index + 1}
+          </span>
         </div>
         
-        <div className="md:col-span-6">
-          <h3 className={`text-4xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-200 ${isOpen ? 'text-white translate-x-4' : 'text-white/40'}`}>
+        <div className="md:col-span-6 pt-1">
+          <h3 className={`text-4xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-700 ease-out ${isOpen ? 'text-cyan-400 translate-x-6' : 'text-white/40'}`}>
             {title}
           </h3>
         </div>
 
-        <div className="md:col-span-5 relative">
-          <div className={`overflow-hidden transition-all duration-200 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-             <p className="text-gray-400 text-lg font-bold uppercase tracking-tight mb-8 leading-relaxed">
-               {desc}
-             </p>
-             <Link to="/contact" className="inline-block px-8 py-3 bg-cyan-400 text-black font-black text-xs tracking-widest uppercase hover:bg-white transition-colors">
-               DECODE SOLUTION
-             </Link>
+        <div className="md:col-span-5 pt-2">
+          {/* Smooth Grid Reveal */}
+          <div className={`grid transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+            <div className="overflow-hidden">
+              <p className={`text-gray-400 text-lg font-bold uppercase tracking-tight mb-8 leading-relaxed transition-transform duration-700 ${isOpen ? 'translate-y-0' : 'translate-y-8'}`}>
+                {desc}
+              </p>
+              <div className={`pb-4 transition-all duration-700 delay-100 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <Link to="/contact" className="inline-block px-8 py-3 bg-cyan-400 text-black font-black text-xs tracking-widest uppercase hover:bg-white transition-all duration-300 hover:scale-110 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  DECODE SOLUTION
+                </Link>
+              </div>
+            </div>
           </div>
-          {!isOpen && <div className="text-white/10 text-8xl absolute top-1/2 left-0 -translate-y-1/2 font-black pointer-events-none">{icon}</div>}
+          {!isOpen && (
+            <div className="text-white/5 text-8xl absolute top-1/2 left-0 -translate-y-1/2 font-black pointer-events-none transition-opacity duration-700">
+              {icon}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -93,22 +106,35 @@ const Services = () => {
         ))}
       </section>
 
-      {/* Industrial Tech Stack */}
-      <section className="py-48 px-6 bg-white text-black observe-section relative overflow-hidden">
+      {/* Industrial Tech Stack - ROLLER ANIMATION */}
+      <section className="py-48 bg-white text-black observe-section relative overflow-hidden">
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee-slow {
+            animation: marquee 30s linear infinite;
+          }
+          .animate-marquee-slow:hover {
+            animation-play-state: paused;
+          }
+        `}} />
+        
         <div className="absolute top-0 left-0 w-full h-1 bg-black/10" />
         
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-32">
-             <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none reveal">TECHNOLOGY STACK</h2>
-             <div className="h-4 w-32 bg-cyan-500 mx-auto mt-8 reveal stagger-1" />
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {technologies.map((tech) => (
-              <div key={tech.name} className="flex flex-col items-center reveal-scale group">
-                <div className="text-xs font-black text-cyan-600 mb-8 tracking-[0.5em] group-hover:scale-125 transition-transform">{tech.icon}</div>
-                <div className="w-full aspect-square border-2 border-black flex items-center justify-center relative overflow-hidden group-hover:bg-black transition-colors">
-                  <span className="text-2xl font-black uppercase tracking-tighter text-black group-hover:text-white transition-colors relative z-10">{tech.name}</span>
+        <div className="text-center mb-32 px-6">
+           <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none reveal">TECHNOLOGY STACK</h2>
+           <div className="h-4 w-32 bg-cyan-500 mx-auto mt-8 reveal stagger-1" />
+        </div>
+        
+        <div className="relative flex overflow-hidden group">
+          <div className="flex animate-marquee-slow whitespace-nowrap py-4">
+            {[...technologies, ...technologies].map((tech, i) => (
+              <div key={`${tech.name}-${i}`} className="inline-flex flex-col items-center px-12 group/item">
+                <div className="text-xs font-black text-cyan-600 mb-8 tracking-[0.5em] group-hover/item:scale-125 transition-transform">{tech.icon}</div>
+                <div className="w-48 h-48 border-2 border-black flex items-center justify-center relative overflow-hidden group-hover/item:bg-black transition-colors">
+                  <span className="text-2xl font-black uppercase tracking-tighter text-black group-hover/item:text-white transition-colors relative z-10">{tech.name}</span>
                   <div className="absolute top-0 right-0 p-2 opacity-5 translate-x-1/2 -translate-y-1/2 text-4xl font-black">{tech.icon}</div>
                 </div>
               </div>

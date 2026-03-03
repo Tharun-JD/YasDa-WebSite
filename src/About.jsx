@@ -77,9 +77,16 @@ const About = () => {
                   <div className="text-8xl font-black text-white mix-blend-difference mb-8">01</div>
                   <h3 className="text-3xl font-black text-white mix-blend-difference uppercase italic leading-none">RADICAL<br />ENGINEERING</h3>
                </div>
-               {/* <div className="relative z-10 text-white/50 mix-blend-difference font-bold uppercase tracking-widest text-xs translate-y-20 group-[.visible]:translate-y-0 transition-all duration-700 delay-300">
-                  ESTABLISHED 2021 / HQ: SECTOR 7 / GLOBAL SCALE
-               </div> */}
+                <div className="relative z-10 text-black font-bold translate-y-20 group-[.visible]:translate-y-0 transition-all duration-1000 delay-300">
+                  <div className="space-y-6">
+                    <p className="text-sm md:text-base leading-relaxed tracking-tight">
+                      <span className="bg-black text-cyan-400 px-2 py-0.5 mr-1">YASDA SOFTWARE</span> is an elite IT engineering collective dedicated to forging the high-performance digital backbones of the modern world. Specializing in <span className="italic font-black opacity-80">TECHNICAL BRUTALISM</span> and <span className="italic font-black opacity-80">RADICAL ENGINEERING</span>, we eliminate the unnecessary noise of conventional software development to focus on pure, mission-critical infrastructure.
+                    </p>
+                    <p className="text-[11px] md:text-[13px] leading-relaxed uppercase tracking-[0.2em] text-black/70 border-l-2 border-black/20 pl-4">
+                      Our expertise spans complex system architecture, industrial automation, and enterprise-scale SaaS solutions, ensuring absolute reliability in high-pressure digital environments.
+                    </p>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
