@@ -27,7 +27,7 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen pt-32 pb-20 selection:bg-cyan-400 selection:text-black">
+    <div className="text-white min-h-screen pt-32 pb-20 selection:bg-cyan-400 selection:text-black">
       {/* Blueprint Hero */}
       <section className="relative py-24 md:py-48 px-6 observe-section overflow-hidden">
         {/* Blueprint Grid Lines */}
@@ -45,8 +45,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Industrial Philosophy Section */}
-      <section className="py-24 px-6 observe-section bg-white text-black relative">
+      {/* Industrial Philosophy Section - 3D Perspective Reveal */}
+      <section className="py-24 px-6 observe-section perspective-3d bg-white text-black relative overflow-hidden">
         <div className="absolute top-0 right-0 w-48 h-12 bg-cyan-400 -translate-y-1/2 translate-x-12 rotate-45" />
         
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
@@ -70,9 +70,9 @@ const About = () => {
             </div>
           </div>
           
-          <div className="reveal relative group">
-            <div className="aspect-4/5 bg-black p-12 flex flex-col justify-between overflow-hidden">
-               <div className="absolute inset-0 bg-cyan-400 translate-y-full group-[.visible]:translate-y-0 transition-transform duration-1000 ease-out" />
+          <div className="group reveal preserve-3d transition-all duration-[1500ms] ease-out [transform:rotateX(-30deg)_translateZ(-100px)] group-[.visible]:[transform:rotateX(0deg)_translateZ(0px)] relative">
+            <div className="aspect-4/5 bg-black p-12 flex flex-col justify-between overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+               <div className="absolute inset-0 bg-cyan-400 translate-y-full group-[.visible]:translate-y-0 transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                <div className="relative z-10">
                   <div className="text-8xl font-black text-white mix-blend-difference mb-8">01</div>
                   <h3 className="text-3xl font-black text-white mix-blend-difference uppercase italic leading-none">RADICAL<br />ENGINEERING</h3>

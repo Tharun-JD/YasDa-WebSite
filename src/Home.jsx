@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import anime from 'animejs';
 import CountUp from './components/CountUp';
 import GlowCard from './components/GlowCard';
+import logoIcon from './assets/logo1.png';
 
 const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
   const barRef = useRef(null);
@@ -38,9 +39,6 @@ const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
 };
 
 const Home = () => {
-  const heroRef = useRef(null);
-  const title1Ref = useRef(null);
-  const title2Ref = useRef(null);
   const [typedText, setTypedText] = useState('');
   const [aboutVisible, setAboutVisible] = useState(false);
 
@@ -73,35 +71,8 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  // Kinetic Hero Animation
+  // Interactive Hero Tracking (3D Tilt)
   useEffect(() => {
-    const tl = anime.timeline({ easing: 'easeOutExpo' });
-
-    tl.add({
-      targets: '.hero-bg-text',
-      translateX: ['100%', '0%'],
-      opacity: [0, 0.03],
-      duration: 3000,
-    })
-    .add({
-      targets: [title1Ref.current, title2Ref.current],
-      translateY: [100, 0],
-      opacity: [0, 1],
-      duration: 1500,
-      delay: anime.stagger(200)
-    }, '-=2500')
-    .add({
-      targets: '.hero-line',
-      scaleX: [0, 1],
-      duration: 1000,
-    }, '-=2000')
-    .add({
-      targets: '.hero-cta',
-      opacity: [0, 1],
-      translateY: [20, 0],
-      duration: 1000,
-    }, '-=1500');
-
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const xPos = (clientX / window.innerWidth - 0.5) * 40;
@@ -109,9 +80,11 @@ const Home = () => {
       
       anime({
         targets: '.hero-interactive',
-        translateX: xPos,
-        translateY: yPos,
-        duration: 1000,
+        rotateX: [yPos * 0.2, -yPos * 0.2],
+        rotateY: [-xPos * 0.2, xPos * 0.2],
+        translateX: xPos * 0.5,
+        translateY: yPos * 0.5,
+        duration: 2000,
         easing: 'easeOutQuad'
       });
 
@@ -171,40 +144,42 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-black text-white overflow-hidden selection:bg-cyan-400 selection:text-black">
-      {/* Hero Section - Kinetic Brutalism */}
-      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center px-6 md:px-20 pt-20 overflow-hidden">
-        {/* Kinetic Background Text */}
-        <div className="hero-bg-text absolute top-1/2 left-0 -translate-y-1/2 text-[30vw] font-black text-white/5 pointer-events-none uppercase italic leading-none whitespace-nowrap overflow-hidden">
-          YASDA YASDA YASDA
+    <main className="text-white selection:bg-cyan-400 selection:text-black overflow-x-hidden perspective-3d">
+      {/* Cinematic 3D Hero Section */}
+      <section className="h-screen relative flex items-center justify-center overflow-hidden preserve-3d">
+        {/* Layer 1: 3D Grid Floor */}
+        <div className="absolute inset-x-0 bottom-0 z-0 pointer-events-none h-1/2">
+          <div 
+            className="absolute inset-0 bg-grid-3d opacity-20 transition-transform duration-1000 ease-out hero-interactive"
+            style={{ 
+              maskImage: 'linear-gradient(to top, black, transparent)'
+            }}
+          />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
-          <div className="hero-line w-32 h-2 bg-cyan-400 mb-12 origin-left" />
-          
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter uppercase italic leading-[0.8] mb-12">
-            <div ref={title1Ref} className="opacity-0 overflow-hidden">ARCHITECTING</div>
-            <div ref={title2Ref} className="opacity-0 overflow-hidden text-cyan-400 drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">THE ENGINE.</div>
-          </h1>
+        {/* Layer 2: Ambient Atmosphere */}
+        <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+           <div className="w-[50vw] h-[50vw] bg-cyan-400/5 blur-[120px] rounded-full animate-pulse-glow" />
+        </div>
 
-          <div className="flex flex-col md:flex-row items-end gap-12 hero-cta opacity-0">
-            <div className="flex-1">
-              <p className="text-xl md:text-2xl text-gray-400 max-w-xl font-bold uppercase tracking-widest leading-relaxed">
-                WE ENGINEER THE <span className="text-white border-b-2 border-white">{typedText}</span> OF TOMORROW.
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <Link to="/services" className="group relative px-12 py-6 bg-white text-black font-black uppercase tracking-tighter overflow-hidden">
-                <span className="relative z-10">INITIATE DISCOVERY</span>
-                <div className="absolute inset-x-0 bottom-0 h-0 bg-cyan-400 group-hover:h-full transition-all duration-300 -z-0" />
-              </Link>
+        {/* Layer 3: Cinematic Text Entrance */}
+        <div className="relative z-20 text-center px-6 preserve-3d">
+          <div className="space-y-4">
+            <h1 className="text-[12vw] font-[1000] italic uppercase leading-[0.7] tracking-[-0.05em] flex flex-col items-center">
+              <span className="block animate-cinematic [animation-delay:0.2s]">YASDA</span>
+              <span className="block text-cyan-400 animate-cinematic [animation-delay:0.5s]">SOFTWARE</span>
+            </h1>
+            <div className="flex items-center justify-center gap-6 mt-12 animate-cinematic [animation-delay:0.8s]">
+              <div className="h-px w-24 bg-cyan-400/50" />
+              <p className="text-xl md:text-2xl font-black uppercase tracking-[0.5em] text-white/50 italic">"We don’t follow trends. We build the future."</p>
+              <div className="h-px w-24 bg-cyan-400/50" />
             </div>
           </div>
         </div>
 
-        {/* Industrial Decorations */}
-        <div className="absolute bottom-20 left-20 hidden lg:block hero-interactive">
-          {/* <div className="text-[10px] font-black tracking-[1em] text-white/20 uppercase vertical-text">STATION: YASDA_HQ / ACTIVE</div> */}
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 animate-bounce-subtle">
+          <div className="w-1 h-16 bg-gradient-to-b from-cyan-400 to-transparent opacity-50" />
         </div>
       </section>
 
@@ -320,23 +295,28 @@ const Home = () => {
           </div>
           
           {/* Layer 2: The Wireframe (Structural Blueprint) */}
-          <div className="cta-ghost-2 absolute flex items-center justify-center mix-blend-overlay">
+          {/* <div className="cta-ghost-2 absolute flex items-center justify-center mix-blend-overlay">
             <div className="text-[46vw] font-black italic uppercase select-none text-wireframe animate-pulse-glow leading-none">
               Y
             </div>
-          </div>
+          </div> */}
 
           {/* Layer 3: The Core (Solid Impact) */}
           <div className="cta-core absolute flex items-center justify-center">
-            <div className="text-[45vw] font-black italic uppercase select-none animate-glitch-subtle animate-scanline bg-clip-text text-transparent bg-gradient-to-b from-cyan-400 to-indigo-900 leading-none drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+            {/* <div className="text-[45vw] font-black italic uppercase select-none animate-glitch-subtle animate-scanline bg-clip-text text-transparent bg-gradient-to-b from-cyan-300 to-indigo-500 leading-none drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
               Y
-            </div>
+            </div> */}
           </div>
         </div>
 
         <div className="max-w-5xl mx-auto text-center reveal-scale relative z-10">
+          {/* Background Logo */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-60 mb-35 pr-5 animate-pulse-glow pointer-events-none -z-10">
+            <img src={logoIcon} alt="" className="w-full max-w-2xl object-contain blur-sm" />
+          </div>
+
           <h2 className="text-6xl md:text-[10vw] font-black uppercase italic tracking-tighter leading-[0.8] mb-16">
-            READY TO <br /> <span className="text-cyan-400 animate-pulse">REACH ALPHA?</span>
+            READY TO <br /> <span className="text-cyan-400">REACH ALPHA?</span>
           </h2>
           <div className="flex flex-col md:flex-row justify-center gap-8">
              <Link to="/contact" className="px-16 py-8 bg-cyan-400 text-black font-black uppercase tracking-tighter text-xl hover:scale-105 transition-transform">
@@ -348,9 +328,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
 export default Home;
-

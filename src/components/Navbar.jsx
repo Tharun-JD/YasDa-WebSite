@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import anime from 'animejs';
+import logoIcon from '../assets/logo1.png';
 
 const NavItem = ({ to, children }) => {
   return (
@@ -18,7 +19,7 @@ const NavItem = ({ to, children }) => {
   );
 };
 
-const Navbar = () => {
+const Navbar = ({ onLogoClick }) => {
   const navRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -49,17 +50,12 @@ const Navbar = () => {
     >
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Logo - Industrial Style */}
-          <Link to="/" className="flex items-center gap-4 group">
-            <div className="relative">
-              <div className="w-10 h-10 bg-black border-2 border-white flex items-center justify-center group-hover:border-cyan-400 transition-colors">
-                <span className="text-white font-black text-xl group-hover:text-cyan-400 transition-colors">Y</span>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-10 h-10 border-2 border-cyan-400/30 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
-            </div>
+          {/* Logo - Industrial Icon + Text Style */}
+          <Link to="/" className="flex items-center gap-3 group" onClick={onLogoClick}>
+            <img src={logoIcon} alt="YASDA Icon" className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" />
             <div className="flex flex-col">
-              <span className="text-white font-black text-xs tracking-[0.3em] uppercase leading-none">YASDA</span>
-              <span className="text-cyan-400 font-bold text-[8px] tracking-[0.5em] uppercase mt-1">SOFTWARE</span>
+              <span className="text-white font-black text-xl tracking-[0.2em] uppercase leading-none group-hover:text-cyan-400 transition-colors">YASDA</span>
+              <span className="text-cyan-400 font-bold text-[9px] tracking-[0.6em] uppercase mt-1 opacity-80">SOFTWARE</span>
             </div>
           </Link>
 

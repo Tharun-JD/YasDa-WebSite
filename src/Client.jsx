@@ -42,7 +42,7 @@ const Client = () => {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen pt-32 pb-40 selection:bg-cyan-400 selection:text-black">
+    <div className="text-white min-h-screen pt-32 pb-40 selection:bg-cyan-400 selection:text-black">
       {/* Client Hero */}
       <section className="relative py-24 px-6 observe-section mb-20">
         <div className="max-w-7xl mx-auto">

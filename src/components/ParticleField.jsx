@@ -117,7 +117,7 @@ const ParticleField = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-50 opacity-90"
+      className="fixed inset-0 pointer-events-none z-0 opacity-80"
       style={{ mixBlendMode: 'screen' }}
     />
   );

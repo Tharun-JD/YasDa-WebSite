@@ -6,7 +6,7 @@ const ServiceItem = ({ title, desc, icon, index }) => {
   
   return (
     <div 
-      className="group border-b border-white/10 last:border-0 py-12 cursor-pointer overflow-hidden transition-all duration-500"
+      className="group border-b border-white/10 last:border-0 py-12 cursor-pointer overflow-hidden transition-all duration-300"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
@@ -16,13 +16,13 @@ const ServiceItem = ({ title, desc, icon, index }) => {
         </div>
         
         <div className="md:col-span-6">
-          <h3 className={`text-4xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-500 ${isOpen ? 'text-white translate-x-4' : 'text-white/40'}`}>
+          <h3 className={`text-4xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-200 ${isOpen ? 'text-white translate-x-4' : 'text-white/40'}`}>
             {title}
           </h3>
         </div>
 
         <div className="md:col-span-5 relative">
-          <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className={`overflow-hidden transition-all duration-200 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
              <p className="text-gray-400 text-lg font-bold uppercase tracking-tight mb-8 leading-relaxed">
                {desc}
              </p>
@@ -68,7 +68,7 @@ const Services = () => {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen pt-32 pb-20 selection:bg-cyan-400 selection:text-black">
+    <div className="text-white min-h-screen pt-32 pb-20 selection:bg-cyan-400 selection:text-black">
       {/* Services Hero */}
       <section className="relative py-24 px-6 observe-section mb-20">
         <div className="max-w-7xl mx-auto">
