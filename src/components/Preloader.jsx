@@ -120,7 +120,7 @@ const Preloader = ({ onComplete, mode }) => {
               <img
                 src={logoIcon}
                 alt=""
-                className="h-[38vh] max-h-[230px] w-auto max-w-[100vw] md:max-w-[85vw] object-contain filter blur-xs animate-pulse-slow"
+                className="h-[38vh] max-h-[280px] mb-2 w-auto max-w-[100vw] md:max-w-[85vw] object-contain filter blur-xs animate-pulse-glow"
               />
             </div>
 

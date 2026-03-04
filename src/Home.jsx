@@ -27,11 +27,7 @@ const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
         <span className="text-cyan-400 font-black text-4xl italic opacity-30 group-hover:opacity-100 transition-opacity">{percentage}%</span>
       </div>
       <div className="h-1 bg-white/5 relative overflow-hidden">
-<<<<<<< HEAD
-        <div 
-=======
         <div
->>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           ref={barRef}
           className="h-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]"
           style={{ width: 0 }}
@@ -45,6 +41,7 @@ const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
 const Home = () => {
   const [typedText, setTypedText] = useState('');
   const [aboutVisible, setAboutVisible] = useState(false);
+  const heroRef = useRef(null);
 
   // Typing effect
   useEffect(() => {
@@ -75,17 +72,49 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  // Hero name dramatic reveal animation using anime.js
+  useEffect(() => {
+    // Set initial hidden state
+    anime.set('.hero-word', { opacity: 0, translateY: 80, skewY: 6 });
+    anime.set('.hero-tagline', { opacity: 0, translateY: 24 });
+
+    const tl = anime.timeline({ easing: 'easeOutExpo' });
+
+    // YASDA slams in from below
+    tl.add({
+      targets: '#hero-yasda',
+      opacity: [0, 1],
+      translateY: [80, 0],
+      skewY: [6, 0],
+      duration: 1000,
+      delay: 300,
+    })
+      // SOFTWARE slams in with overlap
+      .add({
+        targets: '#hero-software',
+        opacity: [0, 1],
+        translateY: [80, 0],
+        skewY: [6, 0],
+        duration: 1000,
+      }, '-=600')
+      // Tagline fades up
+      .add({
+        targets: '.hero-tagline',
+        opacity: [0, 1],
+        translateY: [24, 0],
+        duration: 900,
+      }, '-=300');
+
+    return () => tl.pause();
+  }, []);
+
   // Interactive Hero Tracking (3D Tilt)
   useEffect(() => {
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const xPos = (clientX / window.innerWidth - 0.5) * 40;
       const yPos = (clientY / window.innerHeight - 0.5) * 40;
-<<<<<<< HEAD
-      
-=======
 
->>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
       anime({
         targets: '.hero-interactive',
         rotateX: [yPos * 0.2, -yPos * 0.2],
@@ -157,39 +186,42 @@ const Home = () => {
       <section className="h-screen relative flex items-center justify-center overflow-hidden preserve-3d">
         {/* Layer 1: 3D Grid Floor */}
         <div className="absolute inset-x-0 bottom-0 z-0 pointer-events-none h-1/2">
-<<<<<<< HEAD
-          <div 
-            className="absolute inset-0 bg-grid-3d opacity-20 transition-transform duration-1000 ease-out hero-interactive"
-            style={{ 
-=======
           <div
             className="absolute inset-0 bg-grid-3d opacity-20 transition-transform duration-1000 ease-out hero-interactive"
             style={{
->>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
               maskImage: 'linear-gradient(to top, black, transparent)'
             }}
           />
         </div>
 
-        {/* Layer 2: Ambient Atmosphere */}
-        <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
-<<<<<<< HEAD
-           <div className="w-[50vw] h-[50vw] bg-cyan-400/5 blur-[120px] rounded-full animate-pulse-glow" />
-=======
-          <div className="w-[50vw] h-[50vw] bg-cyan-400/5 blur-[120px] rounded-full animate-pulse-glow" />
->>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
-        </div>
 
         {/* Layer 3: Cinematic Text Entrance */}
-        <div className="relative z-20 text-center px-6 preserve-3d">
+        <div className="relative z-20 text-center px-6 preserve-3d" ref={heroRef}>
           <div className="space-y-4">
-            <h1 className="text-[12vw] font-[1000] italic uppercase leading-[0.7] tracking-[-0.05em] flex flex-col items-center">
-              <span className="block animate-cinematic [animation-delay:0.2s]">YASDA</span>
-              <span className="block text-cyan-400 animate-cinematic [animation-delay:0.5s]">SOFTWARE</span>
+            <h1
+              className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
+              style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
+            >
+              {/* YASDA */}
+              <span
+                id="hero-yasda"
+                className="hero-word block relative"
+                style={{ color: 'white' }}
+              >
+                YASDA
+              </span>
+              {/* SOFTWARE */}
+              <span
+                id="hero-software"
+                className="hero-word block relative"
+                style={{ color: '#22d3ee', textShadow: '0 0 40px rgba(34,211,238,0.4)' }}
+              >
+                SOFTWARE
+              </span>
             </h1>
-            <div className="flex items-center justify-center gap-6 mt-12 animate-cinematic [animation-delay:0.8s]">
+            <div className="hero-tagline flex items-center justify-center gap-6 mt-12">
               <div className="h-px w-24 bg-cyan-400/50" />
-              <p className="text-xl md:text-2xl font-black uppercase tracking-[0.5em] text-white/50 italic">"We don’t follow trends. We build the future."</p>
+              <p className="text-xl md:text-2xl font-black uppercase tracking-[0.5em] text-white/50 italic">"We don't follow trends. We build the future."</p>
               <div className="h-px w-24 bg-cyan-400/50" />
             </div>
           </div>
@@ -204,15 +236,6 @@ const Home = () => {
       {/* About Section - Asymmetric Grid */}
       <section id="about-section" className="py-24 md:py-48 px-6 observe-section relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/[0.02] -skew-x-12 -z-10" />
-<<<<<<< HEAD
-        
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-1 hidden lg:block">
-               <div className="h-64 w-1 bg-cyan-400/20 sticky top-40 mx-auto" />
-            </div>
-            
-=======
 
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -220,7 +243,6 @@ const Home = () => {
               <div className="h-64 w-1 bg-cyan-400/20 sticky top-40 mx-auto" />
             </div>
 
->>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
             <div className="lg:col-span-5 reveal-left">
               <span className="text-cyan-400 font-black text-xs tracking-[0.5em] uppercase mb-8 block">01 / GENESIS</span>
               <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-12 leading-none">
@@ -321,11 +343,7 @@ const Home = () => {
               Y
             </div>
           </div>
-<<<<<<< HEAD
-          
-=======
 
->>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           {/* Layer 2: The Wireframe (Structural Blueprint) */}
           {/* <div className="cta-ghost-2 absolute flex items-center justify-center mix-blend-overlay">
             <div className="text-[46vw] font-black italic uppercase select-none text-wireframe animate-pulse-glow leading-none">
@@ -351,21 +369,12 @@ const Home = () => {
             READY TO <br /> <span className="text-cyan-400">REACH ALPHA?</span>
           </h2>
           <div className="flex flex-col md:flex-row justify-center gap-8">
-<<<<<<< HEAD
-             <Link to="/contact" className="px-16 py-8 bg-cyan-400 text-black font-black uppercase tracking-tighter text-xl hover:scale-105 transition-transform">
-               INITIATE MISSION
-             </Link>
-             <Link to="/portfolio" className="px-16 py-8 border-2 border-white text-white font-black uppercase tracking-tighter text-xl hover:bg-white hover:text-black transition-all">
-               REVIEW ASSETS
-             </Link>
-=======
             <Link to="/contact" className="px-16 py-8 bg-cyan-400 text-black font-black uppercase tracking-tighter text-xl hover:scale-105 transition-transform">
               INITIATE MISSION
             </Link>
             <Link to="/portfolio" className="px-16 py-8 border-2 border-white text-white font-black uppercase tracking-tighter text-xl hover:bg-white hover:text-black transition-all">
               REVIEW ASSETS
             </Link>
->>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           </div>
         </div>
       </section>
