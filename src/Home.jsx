@@ -27,7 +27,11 @@ const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
         <span className="text-cyan-400 font-black text-4xl italic opacity-30 group-hover:opacity-100 transition-opacity">{percentage}%</span>
       </div>
       <div className="h-1 bg-white/5 relative overflow-hidden">
+<<<<<<< HEAD
         <div 
+=======
+        <div
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           ref={barRef}
           className="h-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]"
           style={{ width: 0 }}
@@ -77,7 +81,11 @@ const Home = () => {
       const { clientX, clientY } = e;
       const xPos = (clientX / window.innerWidth - 0.5) * 40;
       const yPos = (clientY / window.innerHeight - 0.5) * 40;
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
       anime({
         targets: '.hero-interactive',
         rotateX: [yPos * 0.2, -yPos * 0.2],
@@ -149,9 +157,15 @@ const Home = () => {
       <section className="h-screen relative flex items-center justify-center overflow-hidden preserve-3d">
         {/* Layer 1: 3D Grid Floor */}
         <div className="absolute inset-x-0 bottom-0 z-0 pointer-events-none h-1/2">
+<<<<<<< HEAD
           <div 
             className="absolute inset-0 bg-grid-3d opacity-20 transition-transform duration-1000 ease-out hero-interactive"
             style={{ 
+=======
+          <div
+            className="absolute inset-0 bg-grid-3d opacity-20 transition-transform duration-1000 ease-out hero-interactive"
+            style={{
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
               maskImage: 'linear-gradient(to top, black, transparent)'
             }}
           />
@@ -159,7 +173,11 @@ const Home = () => {
 
         {/* Layer 2: Ambient Atmosphere */}
         <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+<<<<<<< HEAD
            <div className="w-[50vw] h-[50vw] bg-cyan-400/5 blur-[120px] rounded-full animate-pulse-glow" />
+=======
+          <div className="w-[50vw] h-[50vw] bg-cyan-400/5 blur-[120px] rounded-full animate-pulse-glow" />
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
         </div>
 
         {/* Layer 3: Cinematic Text Entrance */}
@@ -186,6 +204,7 @@ const Home = () => {
       {/* About Section - Asymmetric Grid */}
       <section id="about-section" className="py-24 md:py-48 px-6 observe-section relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/[0.02] -skew-x-12 -z-10" />
+<<<<<<< HEAD
         
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -193,6 +212,15 @@ const Home = () => {
                <div className="h-64 w-1 bg-cyan-400/20 sticky top-40 mx-auto" />
             </div>
             
+=======
+
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-1 hidden lg:block">
+              <div className="h-64 w-1 bg-cyan-400/20 sticky top-40 mx-auto" />
+            </div>
+
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
             <div className="lg:col-span-5 reveal-left">
               <span className="text-cyan-400 font-black text-xs tracking-[0.5em] uppercase mb-8 block">01 / GENESIS</span>
               <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-12 leading-none">
@@ -293,7 +321,11 @@ const Home = () => {
               Y
             </div>
           </div>
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           {/* Layer 2: The Wireframe (Structural Blueprint) */}
           {/* <div className="cta-ghost-2 absolute flex items-center justify-center mix-blend-overlay">
             <div className="text-[46vw] font-black italic uppercase select-none text-wireframe animate-pulse-glow leading-none">
@@ -319,12 +351,21 @@ const Home = () => {
             READY TO <br /> <span className="text-cyan-400">REACH ALPHA?</span>
           </h2>
           <div className="flex flex-col md:flex-row justify-center gap-8">
+<<<<<<< HEAD
              <Link to="/contact" className="px-16 py-8 bg-cyan-400 text-black font-black uppercase tracking-tighter text-xl hover:scale-105 transition-transform">
                INITIATE MISSION
              </Link>
              <Link to="/portfolio" className="px-16 py-8 border-2 border-white text-white font-black uppercase tracking-tighter text-xl hover:bg-white hover:text-black transition-all">
                REVIEW ASSETS
              </Link>
+=======
+            <Link to="/contact" className="px-16 py-8 bg-cyan-400 text-black font-black uppercase tracking-tighter text-xl hover:scale-105 transition-transform">
+              INITIATE MISSION
+            </Link>
+            <Link to="/portfolio" className="px-16 py-8 border-2 border-white text-white font-black uppercase tracking-tighter text-xl hover:bg-white hover:text-black transition-all">
+              REVIEW ASSETS
+            </Link>
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           </div>
         </div>
       </section>

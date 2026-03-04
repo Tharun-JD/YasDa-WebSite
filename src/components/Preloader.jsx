@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
+<<<<<<< HEAD
 import anime from 'animejs';
 import logoIcon from '../assets/logo1.png';
+=======
+import logoIcon from '../assets/logo1.png';
+import LogoAnimation from './LogoAnimation';
+import NameReveal from './NameReveal';
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
 
 const Preloader = ({ onComplete, mode }) => {
   const isNav = mode && mode.startsWith('nav-');
@@ -9,7 +15,11 @@ const Preloader = ({ onComplete, mode }) => {
 
   useEffect(() => {
     let timer1, timer2;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
     if (isNav) {
       // Nav mode: Skip phase 1, show phase 2 for 2.5s
       timer2 = setTimeout(() => setPhase(3), 2500);
@@ -40,7 +50,11 @@ const Preloader = ({ onComplete, mode }) => {
 
   // Route-specific Content Configuration
   const getContent = () => {
+<<<<<<< HEAD
     switch(mode) {
+=======
+    switch (mode) {
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
       case 'nav-home': return { text: "YASDA SOFTWARE", accent: "text-cyan-400", overlay: "default-grid" };
       case 'nav-about': return { text: "ABOUT", accent: "text-cyan-400", overlay: "about-scan" };
       case 'nav-services': return { text: "SERVICES", accent: "text-blue-500", overlay: "matrix-rain" };
@@ -67,11 +81,19 @@ const Preloader = ({ onComplete, mode }) => {
         )}
         {config.overlay === 'matrix-rain' && (
           <div className="absolute inset-0 matrix-container opacity-20">
+<<<<<<< HEAD
              {[...Array(10)].map((_, i) => (
                 <div key={i} className="matrix-column text-cyan-500 text-[10px] font-mono leading-none flex flex-col" style={{ left: `${i * 10}%`, animationDelay: `${i * 0.5}s` }}>
                   {"010101011100101".split("").map((c, j) => <span key={j}>{c}</span>)}
                 </div>
               ))}
+=======
+            {[...Array(10)].map((_, i) => (
+              <div key={i} className="matrix-column text-cyan-500 text-[10px] font-mono leading-none flex flex-col" style={{ left: `${i * 10}%`, animationDelay: `${i * 0.5}s` }}>
+                {"010101011100101".split("").map((c, j) => <span key={j}>{c}</span>)}
+              </div>
+            ))}
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           </div>
         )}
         {config.overlay === 'lens-shutter' && (
@@ -83,14 +105,21 @@ const Preloader = ({ onComplete, mode }) => {
         {config.overlay === 'wave-pulse' && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex gap-1 h-32 items-center">
+<<<<<<< HEAD
                {[...Array(20)].map((_, i) => (
                   <div key={i} className="w-1 bg-cyan-400 animate-waveform" style={{ animationDelay: `${i * 0.1}s` }} />
                 ))}
+=======
+              {[...Array(20)].map((_, i) => (
+                <div key={i} className="w-1 bg-cyan-400 animate-waveform" style={{ animationDelay: `${i * 0.1}s` }} />
+              ))}
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
             </div>
           </div>
         )}
         {config.overlay === 'star-field' && (
           <div className="absolute inset-0">
+<<<<<<< HEAD
              {[...Array(50)].map((_, i) => (
                 <div key={i} className="absolute bg-white rounded-full animate-twinkle" style={{ 
                   top: `${Math.random() * 100}%`, 
@@ -100,6 +129,17 @@ const Preloader = ({ onComplete, mode }) => {
                   animationDelay: `${Math.random() * 2}s`
                 }} />
               ))}
+=======
+            {[...Array(50)].map((_, i) => (
+              <div key={i} className="absolute bg-white rounded-full animate-twinkle" style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                width: `${Math.random() * 3}px`,
+                height: `${Math.random() * 3}px`,
+                animationDelay: `${Math.random() * 2}s`
+              }} />
+            ))}
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
           </div>
         )}
         <div className="absolute inset-0 cyber-grid-overlay opacity-20" />
@@ -108,6 +148,7 @@ const Preloader = ({ onComplete, mode }) => {
       <div className="relative flex flex-col items-center w-full max-w-4xl px-6">
         {/* Phase 1: Pure Logo Entrance */}
         {phase === 1 && (
+<<<<<<< HEAD
           <div className="flex flex-col items-center relative z-10 text-center">
             <div className="opacity-0 scale-75 animate-cinematic">
               <img
@@ -117,10 +158,14 @@ const Preloader = ({ onComplete, mode }) => {
               />
             </div>
           </div>
+=======
+          <LogoAnimation />
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
         )}
 
         {/* Phase 2: Reveal Company Name with logo in background */}
         {phase >= 2 && phase < 3 && (
+<<<<<<< HEAD
           <div className="flex flex-col items-center text-center relative z-10 min-h-[400px] justify-center">
             {/* Cinematic Background Logo - Refined Visibility */}
             <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-40 pointer-events-none overflow-hidden">
@@ -199,6 +244,22 @@ const Preloader = ({ onComplete, mode }) => {
               })()}
               
               <p className="mt-20 text-white/10 font-bold uppercase tracking-[1em] text-[8px]">
+=======
+          <div className="flex flex-col items-center text-center relative z-10 min-h-[300px] justify-center w-full">
+            {/* Cinematic Background Logo - Refined Visibility */}
+            <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-40 pointer-events-none overflow-hidden">
+              <img
+                src={logoIcon}
+                alt=""
+                className="h-[38vh] max-h-[230px] w-auto max-w-[100vw] md:max-w-[85vw] object-contain filter blur-xs animate-pulse-slow"
+              />
+            </div>
+
+            <div className={`relative w-full max-w-7xl px-2 sm:px-4 flex flex-col items-center`}>
+              <NameReveal config={config} mode={mode} progress={progress} />
+
+              <p className="mt-30 text-white/10 font-bold uppercase tracking-[1em] text-[8px]">
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
                 YASDA INDUSTRIAL OPERATING SYSTEM v2.0
               </p>
             </div>
@@ -207,6 +268,7 @@ const Preloader = ({ onComplete, mode }) => {
       </div>
 
       <style jsx>{`
+<<<<<<< HEAD
         @keyframes reveal-cyber {
           0% { transform: translateY(40px) skewX(20deg) scale(0.8); opacity: 0; filter: blur(15px) brightness(3); }
           5% { opacity: 0.5; filter: blur(10px) brightness(2); }
@@ -235,6 +297,8 @@ const Preloader = ({ onComplete, mode }) => {
         }
         .animate-char-scan { animation: char-scan 0.5s linear forwards; }
 
+=======
+>>>>>>> 1ce6b10 (Refine intro animations and modularize Preloader components)
         @keyframes pulse-logo-bg {
           0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.35; filter: blur(4px) brightness(1.1); }
           50% { transform: scale(1.05) rotate(0.5deg); opacity: 0.6; filter: blur(2px) brightness(1.4); }
