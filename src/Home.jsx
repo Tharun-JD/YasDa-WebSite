@@ -39,38 +39,8 @@ const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
 };
 
 const Home = () => {
-  const [typedText, setTypedText] = useState('');
   const [aboutVisible, setAboutVisible] = useState(false);
   const heroRef = useRef(null);
-
-  // Typing effect
-  useEffect(() => {
-    const words = ['ENGINEERING INFRASTRUCTURE', 'AUTONOMOUS SYSTEMS', 'HYPER-SCALE DEVOPS', 'SaaS ARCHITECTURE'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let timeout;
-
-    const type = () => {
-      const currentWord = words[wordIndex];
-      setTypedText(isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex + 1));
-      charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
-
-      let speed = isDeleting ? 40 : 80;
-      if (!isDeleting && charIndex === currentWord.length) {
-        speed = 2500;
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        speed = 500;
-      }
-      timeout = setTimeout(type, speed);
-    };
-
-    type();
-    return () => clearTimeout(timeout);
-  }, []);
 
   // Hero name dramatic reveal animation using anime.js
   useEffect(() => {
@@ -335,30 +305,6 @@ const Home = () => {
 
       {/* CTA - Final Impact */}
       <section className="py-48 px-6 observe-section relative">
-        {/* Glowing Background 'Y' - Triple Layer Cybernetic Transformation */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
-          {/* Layer 1: The Ghost (Chromatic Aberration) */}
-          <div className="cta-ghost-1 absolute flex items-center justify-center mix-blend-screen opacity-20">
-            <div className="text-[48vw] font-black italic uppercase select-none animate-shiver-fast text-cyan-400/30 leading-none">
-              Y
-            </div>
-          </div>
-
-          {/* Layer 2: The Wireframe (Structural Blueprint) */}
-          {/* <div className="cta-ghost-2 absolute flex items-center justify-center mix-blend-overlay">
-            <div className="text-[46vw] font-black italic uppercase select-none text-wireframe animate-pulse-glow leading-none">
-              Y
-            </div>
-          </div> */}
-
-          {/* Layer 3: The Core (Solid Impact) */}
-          <div className="cta-core absolute flex items-center justify-center">
-            {/* <div className="text-[45vw] font-black italic uppercase select-none animate-glitch-subtle animate-scanline bg-clip-text text-transparent bg-gradient-to-b from-cyan-300 to-indigo-500 leading-none drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-              Y
-            </div> */}
-          </div>
-        </div>
-
         <div className="max-w-5xl mx-auto text-center reveal-scale relative z-10">
           {/* Background Logo */}
           <div className="absolute inset-0 flex items-center justify-center opacity-60 mb-35 pr-5 animate-pulse-glow pointer-events-none -z-10">

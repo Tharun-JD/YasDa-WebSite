@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageTransition from './components/PageTransition';
 import ParticleField from './components/ParticleField';
-import NoiseOverlay from './components/NoiseOverlay';
 import Preloader from './components/Preloader';
 
 import Home from './Home';
@@ -42,8 +41,9 @@ function App() {
         
         {!loading && (
           <div className="relative isolate min-h-screen">
-            <NoiseOverlay />
-            <div className="fixed inset-0 z-0"><ParticleField /></div>
+            <div className="fixed inset-0 z-0">
+              <ParticleField />
+            </div>
             
             <div className="relative z-10 flex flex-col min-h-screen">
               <Navbar onNavClick={triggerPreloader} />
