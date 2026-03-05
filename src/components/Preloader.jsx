@@ -106,7 +106,7 @@ const Preloader = ({ onComplete, mode }) => {
         <div className="absolute inset-0 cyber-grid-overlay opacity-20" />
       </div>
 
-      <div className="relative flex flex-col items-center w-full max-w-4xl px-6">
+      <div className="absolute inset-0 flex flex-col items-center justify-center w-full px-6">
         {/* Phase 1: Pure Logo Entrance */}
         {phase === 1 && (
           <LogoAnimation />
@@ -114,7 +114,7 @@ const Preloader = ({ onComplete, mode }) => {
 
         {/* Phase 2: Reveal Company Name with logo in background */}
         {phase >= 2 && phase < 3 && (
-          <div className="flex flex-col items-center text-center relative z-10 min-h-[300px] justify-center w-full">
+          <div className="flex flex-col items-center text-center relative z-10 w-full justify-center max-w-5xl mx-auto">
             {/* Cinematic Background Logo - Refined Visibility */}
             <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-40 pointer-events-none overflow-hidden">
               <img

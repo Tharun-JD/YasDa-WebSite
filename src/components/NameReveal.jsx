@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import anime from 'animejs';
 
 const GLITCH_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
 
@@ -10,7 +9,7 @@ const NameReveal = ({ config, mode, progress }) => {
     const words = text.split(' ');
 
     const [displayChars, setDisplayChars] = useState(() =>
-        words.map(w => w.split('').map(c => c))
+        words.map(w => w.split('').map(() => GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]))
     );
     const [revealed, setRevealed] = useState(false);
     const [scanActive, setScanActive] = useState(false);
@@ -27,7 +26,6 @@ const NameReveal = ({ config, mode, progress }) => {
         const scanTimer = setTimeout(() => setScanActive(true), 200);
         const lineTimer = setTimeout(() => {
             setLineVisible(true);
-            // Scramble all words together
             words.forEach((word, wIdx) => {
                 scrambleThenReveal(wIdx, word, wIdx * 300);
             });
@@ -38,6 +36,8 @@ const NameReveal = ({ config, mode, progress }) => {
             clearTimeout(lineTimer);
         };
     }, [text]);
+
+    const lastWordIdx = words.length - 1;
 
     const scrambleThenReveal = (wordIdx, word, startDelay) => {
         const revealStagger = 70;
@@ -66,14 +66,13 @@ const NameReveal = ({ config, mode, progress }) => {
             }, scrambleInterval);
         });
 
-        const lastWordIdx = words.length - 1;
         if (wordIdx === lastWordIdx) {
             setTimeout(() => setRevealed(true), startDelay + word.length * revealStagger + 300);
         }
     };
 
     return (
-        <div ref={containerRef} className="flex flex-col items-center justify-center w-full mt-4 relative">
+        <div ref={containerRef} className="flex flex-col items-center justify-center w-full relative">
 
             {/* Horizontal scan line sweep */}
             {scanActive && (
@@ -89,7 +88,7 @@ const NameReveal = ({ config, mode, progress }) => {
             )}
 
             {/* Single straight line: YASDA SOFTWARE */}
-            <div className="w-full flex justify-center px-2 relative">
+            <div className="w-full flex mt-45 justify-center px-2 relative">
                 <h1
                     className="font-black italic uppercase text-center whitespace-nowrap"
                     style={{
@@ -152,20 +151,20 @@ const NameReveal = ({ config, mode, progress }) => {
             </div>
 
             {/* Progress bar */}
-            <div className="relative w-full mt-8 mx-auto overflow-hidden" style={{ maxWidth: 'min(80vw, 500px)' }}>
-                <div className="h-px w-full relative" style={{ background: 'rgba(255,255,255,0.1)' }}>
+            <div className="relative w-full mt-15 mx-auto overflow-hidden" style={{ maxWidth: 'min(90vw, 700px)' }}>
+                <div className="h-2 w-full relative rounded-sm" style={{ background: 'rgba(255,255,255,0.1)' }}>
                     <div
-                        className="absolute inset-y-0 left-0 transition-all duration-300 ease-out"
+                        className="absolute inset-y-0 left-0 transition-all duration-300 ease-out rounded-sm"
                         style={{
                             width: progress + '%',
-                            background: '#22d3ee',
+                            background: 'linear-gradient(90deg, #0891b2, #22d3ee)',
                             boxShadow: '0 0 15px rgba(34,211,238,0.8)',
                         }}
                     />
                     {[20, 40, 60, 80].map(pct => (
                         <div
                             key={pct}
-                            className="absolute top-0 w-px h-2 -translate-y-1/2"
+                            className="absolute top-0 w-px h-3 -translate-y-1/4"
                             style={{
                                 left: pct + '%',
                                 background: 'rgba(34,211,238,0.4)',
@@ -175,10 +174,10 @@ const NameReveal = ({ config, mode, progress }) => {
                         />
                     ))}
                 </div>
-                <div className="flex justify-between mt-1">
-                    <span style={{ fontSize: '8px', fontFamily: 'monospace', color: 'rgba(34,211,238,0.3)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>INIT</span>
-                    <span style={{ fontSize: '8px', fontFamily: 'monospace', color: 'rgba(34,211,238,0.6)', letterSpacing: '0.2em' }}>{progress}%</span>
-                    <span style={{ fontSize: '8px', fontFamily: 'monospace', color: 'rgba(34,211,238,0.3)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>READY</span>
+                <div className="flex justify-between mt-2">
+                    <span style={{ fontSize: '12px', fontFamily: 'monospace', color: 'rgba(34,211,238,0.5)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>INIT</span>
+                    <span style={{ fontSize: '12px', fontFamily: 'monospace', color: 'rgba(34,211,238,0.9)', letterSpacing: '0.2em' }}>{progress}%</span>
+                    <span style={{ fontSize: '12px', fontFamily: 'monospace', color: 'rgba(34,211,238,0.5)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>READY</span>
                 </div>
             </div>
 
@@ -187,7 +186,7 @@ const NameReveal = ({ config, mode, progress }) => {
                 <div className="mt-6 overflow-hidden">
                     <p
                         style={{
-                            fontSize: '10px',
+                            fontSize: '11px',
                             fontWeight: 900,
                             letterSpacing: '0.5em',
                             color: 'rgba(34,211,238,0.6)',
@@ -195,24 +194,23 @@ const NameReveal = ({ config, mode, progress }) => {
                             animation: 'tagline-reveal 1.2s cubic-bezier(0.19,1,0.22,1) forwards',
                             animationDelay: '1.6s',
                             opacity: 0,
-                            clipPath: 'inset(0 100% 0 0)',
                         }}
                     >
-                        &quot; INNOVATION IS OUR DEFAULT SETTING &quot;
+                        " INNOVATION IS OUR DEFAULT SETTING "
                     </p>
                 </div>
             )}
 
             <style>{`
                 @keyframes name-scan-sweep {
-                    0%   { top: -10%; opacity: 0; }
+                    0%   { top: -2px; opacity: 0; }
                     10%  { opacity: 1; }
                     90%  { opacity: 1; }
-                    100% { top: 110%; opacity: 0; }
+                    100% { top: 100%; opacity: 0; }
                 }
                 @keyframes tagline-reveal {
-                    0%   { opacity: 0; clip-path: inset(0 100% 0 0); transform: translateY(6px); }
-                    100% { opacity: 1; clip-path: inset(0 0% 0 0); transform: translateY(0); }
+                    0%   { opacity: 0; transform: translateY(8px); }
+                    100% { opacity: 1; transform: translateY(0); }
                 }
             `}</style>
         </div>
