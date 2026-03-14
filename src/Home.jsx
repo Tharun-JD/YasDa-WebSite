@@ -159,7 +159,7 @@ const Home = () => {
           <div 
             className="absolute w-[1000px] h-[1000px] rounded-full"
             style={{
-              background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%)',
+              background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%)',
               filter: 'blur(60px)'
             }}
           />
