@@ -154,6 +154,17 @@ const Home = () => {
     <main className="text-white selection:bg-cyan-400 selection:text-black overflow-x-hidden perspective-3d">
       {/* Cinematic 3D Hero Section */}
       <section className="h-screen relative flex items-center justify-center overflow-hidden preserve-3d">
+        {/* Layer 0: Blur White Circle */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
+          <div 
+            className="absolute w-[1000px] h-[1000px] rounded-full"
+            style={{
+              background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%)',
+              filter: 'blur(60px)'
+            }}
+          />
+        </div>
+
         {/* Layer 1: 3D Grid Floor */}
         <div className="absolute inset-x-0 bottom-0 z-0 pointer-events-none h-1/2">
           <div
