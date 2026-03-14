@@ -5,7 +5,7 @@ const GLITCH_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
 const NameReveal = ({ config, mode, progress }) => {
     const containerRef = useRef(null);
     const isInitialBrand = mode === 'initial' || mode === 'nav-home' || !mode;
-    const text = config?.text || 'YASDA SOFTWARE';
+    const text = config?.text || 'YASDA SYSTEM';
     const words = text.split(' ');
 
     const [displayChars, setDisplayChars] = useState(() =>
@@ -87,7 +87,7 @@ const NameReveal = ({ config, mode, progress }) => {
                 />
             )}
 
-            {/* Single straight line: YASDA SOFTWARE */}
+            {/* Single straight line: YASDA SYSTEM */}
             <div className="w-full flex mt-45 justify-center px-2 relative">
                 <h1
                     className="font-black italic uppercase text-center whitespace-nowrap"
@@ -196,7 +196,7 @@ const NameReveal = ({ config, mode, progress }) => {
                             opacity: 0,
                         }}
                     >
-                        " INNOVATION IS OUR DEFAULT SETTING "
+    INNOVATION IS OUR DEFAULT SETTING
                     </p>
                 </div>
             )}

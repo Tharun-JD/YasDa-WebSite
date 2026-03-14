@@ -19,7 +19,7 @@ const About = () => {
   }, []);
 
   const timeline = [
-    { year: "2020", title: "INITIALIZATION", description: "YASDA SOFTWARE was forged in the peak of digital acceleration, targeting mission-critical enterprise gaps.", achievement: "FOUNDED" },
+    { year: "2020", title: "INITIALIZATION", description: "YASDA SYSTEM was forged in the peak of digital acceleration, targeting mission-critical enterprise gaps.", achievement: "FOUNDED" },
     { year: "2021", title: "INFRASTRUCTURE CORE", description: "Scaled to 5 veteran engineers and deployed our first Tier-1 SaaS backbone for global manufacturing.", achievement: "10+ SYSTEMS" },
     { year: "2022", title: "CLOUD ORCHESTRATION", description: "Achieved absolute AWS & Proxmox mastery with zero-downtime records across 12 high-traffic nodes.", achievement: "99.99% UPTIME" },
     { year: "2023", title: "NEURAL SYNTHESIS", description: "Pioneered ML-driven visual inspection for the manufacturing sector's 18+ precision machines.", achievement: "AI LEADER" },
@@ -80,7 +80,7 @@ const About = () => {
                 <div className="relative z-10 text-black font-bold translate-y-20 group-[.visible]:translate-y-0 transition-all duration-1000 delay-300">
                   <div className="space-y-6">
                     <p className="text-sm md:text-base leading-relaxed tracking-tight">
-                      <span className="bg-black text-cyan-400 px-2 py-0.5 mr-1">YASDA SOFTWARE</span> is an elite IT engineering collective dedicated to forging the high-performance digital backbones of the modern world. Specializing in <span className="italic font-black opacity-80">TECHNICAL BRUTALISM</span> and <span className="italic font-black opacity-80">RADICAL ENGINEERING</span>, we eliminate the unnecessary noise of conventional software development to focus on pure, mission-critical infrastructure.
+                      <span className="bg-black text-cyan-400 px-2 py-0.5 mr-1">YASDA SYSTEM</span> is an elite IT engineering collective dedicated to forging the high-performance digital backbones of the modern world. Specializing in <span className="italic font-black opacity-80">TECHNICAL BRUTALISM</span> and <span className="italic font-black opacity-80">RADICAL ENGINEERING</span>, we eliminate the unnecessary noise of conventional software development to focus on pure, mission-critical infrastructure.
                     </p>
                     <p className="text-[11px] md:text-[13px] leading-relaxed uppercase tracking-[0.2em] text-black/70 border-l-2 border-black/20 pl-4">
                       Our expertise spans complex system architecture, industrial automation, and enterprise-scale SaaS solutions, ensuring absolute reliability in high-pressure digital environments.

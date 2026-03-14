@@ -7,7 +7,7 @@ const LogoAnimation = () => {
             <div className="opacity-0 scale-75 animate-cinematic">
                 <img
                     src={logoIcon}
-                    alt="Yasda Software Logo"
+                    alt="YASDA SYSTEM Logo"
                     className="w-[min(78vw,520px)] h-auto object-contain glow-cyan animate-logo-pulse"
                 />
             </div>
