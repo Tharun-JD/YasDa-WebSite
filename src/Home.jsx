@@ -4,6 +4,7 @@ import anime from 'animejs';
 import CountUp from './components/CountUp';
 import GlowCard from './components/GlowCard';
 import logoIcon from './assets/logo1.png';
+import heroVideo from './assets/hero1.mp4';
 
 const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
   const barRef = useRef(null);
@@ -42,41 +43,7 @@ const Home = () => {
   const [aboutVisible, setAboutVisible] = useState(false);
   const heroRef = useRef(null);
 
-  // Hero name dramatic reveal animation using anime.js
-  useEffect(() => {
-    // Set initial hidden state
-    anime.set('.hero-word', { opacity: 0, translateY: 80, skewY: 6 });
-    anime.set('.hero-tagline', { opacity: 0, translateY: 24 });
 
-    const tl = anime.timeline({ easing: 'easeOutExpo' });
-
-    // YASDA slams in from below
-    tl.add({
-      targets: '#hero-yasda',
-      opacity: [0, 1],
-      translateY: [80, 0],
-      skewY: [6, 0],
-      duration: 1000,
-      delay: 300,
-    })
-      // SOFTWARE slams in with overlap
-      .add({
-        targets: '#hero-software',
-        opacity: [0, 1],
-        translateY: [80, 0],
-        skewY: [6, 0],
-        duration: 1000,
-      }, '-=600')
-      // Tagline fades up
-      .add({
-        targets: '.hero-tagline',
-        opacity: [0, 1],
-        translateY: [24, 0],
-        duration: 900,
-      }, '-=300');
-
-    return () => tl.pause();
-  }, []);
 
   // Interactive Hero Tracking (3D Tilt)
   useEffect(() => {
@@ -154,15 +121,18 @@ const Home = () => {
     <main className="text-white selection:bg-cyan-400 selection:text-black overflow-x-hidden perspective-3d">
       {/* Cinematic 3D Hero Section */}
       <section className="h-screen relative flex items-center justify-center overflow-hidden preserve-3d">
-        {/* Layer 0: Blur White Circle */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <div 
-            className="absolute w-[1000px] h-[1000px] rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%)',
-              filter: 'blur(60px)'
-            }}
-          />
+        {/* Layer 0: Hero Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
         {/* Layer 1: 3D Grid Floor */}
@@ -175,38 +145,6 @@ const Home = () => {
           />
         </div>
 
-
-        {/* Layer 3: Cinematic Text Entrance */}
-        <div className="relative z-20 text-center px-6 preserve-3d" ref={heroRef}>
-          <div className="space-y-4">
-            <h1
-              className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
-              style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
-            >
-              {/* YASDA */}
-              <span
-                id="hero-yasda"
-                className="hero-word block relative"
-                style={{ color: 'white' }}
-              >
-                YASDA
-              </span>
-              {/* SOFTWARE */}
-              <span
-                id="hero-software"
-                className="hero-word block relative"
-                style={{ color: '#22d3ee', textShadow: '0 0 40px rgba(34,211,238,0.4)' }}
-              >
-                SOFTWARE
-              </span>
-            </h1>
-            <div className="hero-tagline flex items-center justify-center gap-6 mt-12">
-              <div className="h-px w-24 bg-cyan-400/50" />
-              <p className="text-xl md:text-2xl font-black uppercase tracking-[0.5em] text-white/50 italic">"We don't follow trends. We build the future."</p>
-              <div className="h-px w-24 bg-cyan-400/50" />
-            </div>
-          </div>
-        </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 animate-bounce-subtle">
