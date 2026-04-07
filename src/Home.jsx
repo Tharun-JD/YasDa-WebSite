@@ -23,7 +23,7 @@ const LetterReveal = ({ text, delay, color = "white", onComplete }) => {
       {text.split('').map((char, i) => (
         <span 
           key={i} 
-          className={`transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1) ${isRevealed ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-xl'}`}
+          className={`transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) ${isRevealed ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
           style={{ 
             color,
             transitionDelay: `${i * 60}ms`
@@ -192,12 +192,6 @@ const Home = () => {
                   className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
                   style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
                 >
-                {/* Light Sweep (Professional Overlay) */}
-                {startSystems && (
-                  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-                    <div className="w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent animate-light-sweep" style={{ animationDelay: '800ms' }} />
-                  </div>
-                )}
 
                 {/* YASDA Reveal */}
                 <LetterReveal 
