@@ -198,6 +198,10 @@
   }
 }
 
+.name-hero-container {
+  @apply py-4 mb-4;
+}
+
 /* Hero tagline fade-in */
 @keyframes hero-tagline-in {
   0% {
@@ -774,7 +778,7 @@ html {
 /* ===== Hero Name Enhancement (Kinetic HUD) ===== */
 
 .name-hero-container {
-  @apply relative py-12 px-20 mb-20 transition-all duration-700;
+  @apply relative py-4 px-20 mb-4 transition-all duration-700;
 }
 
 .name-hero-container::before {

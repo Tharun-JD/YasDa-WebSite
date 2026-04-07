@@ -223,7 +223,7 @@ const Home = () => {
               </h1>
             </div>
 
-            <div className="hero-tagline flex items-center justify-center gap-6 mt-12">
+            <div className="hero-tagline flex items-center justify-center gap-6 mt-4">
               <div className="h-px w-24 bg-cyan-400/50" />
               <p className="text-xl md:text-2xl font-black uppercase tracking-[0.5em] text-white/50 italic">"We don't follow trends. We build the future."</p>
               <div className="h-px w-24 bg-cyan-400/50" />
