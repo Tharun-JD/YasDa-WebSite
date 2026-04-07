@@ -23,10 +23,14 @@ const LetterReveal = ({ text, delay, color = "white", onComplete }) => {
       {text.split('').map((char, i) => (
         <span 
           key={i} 
-          className={`transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) ${isRevealed ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+          className="inline-block transition-all"
           style={{ 
             color,
-            transitionDelay: `${i * 60}ms`
+            transitionDuration: '1500ms',
+            transitionTimingFunction: 'cubic-bezier(0.1, 1, 0.1, 1)',
+            transitionDelay: `${i * 40}ms`,
+            opacity: isRevealed ? 1 : 0,
+            transform: isRevealed ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
           }}
         >
           {char === ' ' ? '\u00A0' : char}
