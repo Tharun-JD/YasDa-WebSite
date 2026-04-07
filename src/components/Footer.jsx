@@ -29,7 +29,11 @@ const Footer = () => {
         { label: "LinkedIn", href: "https://linkedin.com", external: true },
         { label: "GitHub", href: "https://github.com", external: true },
         { label: "Twitter", href: "https://twitter.com", external: true },
+<<<<<<< HEAD
         { label: "Email", href: "mailto:info@yasdasystem.com", external: true }
+=======
+        { label: "Email", href: "mailto:info@yasdasoftware.com", external: true }
+>>>>>>> origin/main
       ]
     }
   ];
@@ -42,16 +46,25 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
+<<<<<<< HEAD
               <span className="text-2xl font-bold text-cyan-400">YASDA SYSTEMS</span>
             </Link>
 
+=======
+              <span className="text-2xl font-bold text-cyan-400">YASDA SOFTWARE</span>
+            </Link>
+>>>>>>> origin/main
             <p className="text-gray-400 mb-6 leading-relaxed text-sm">
               Transforming businesses through innovative software solutions. We specialize in web development, mobile apps, cloud infrastructure, and DevOps to help companies scale and succeed.
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-3 text-gray-400">
                 <span className="text-cyan-400">📧</span>
+<<<<<<< HEAD
                 <a href="mailto:info@yasdasystem.com" className="hover:text-cyan-400 transition-colors">info@yasdasystem.com</a>
+=======
+                <a href="mailto:info@yasdasoftware.com" className="hover:text-cyan-400 transition-colors">info@yasdasoftware.com</a>
+>>>>>>> origin/main
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <span className="text-cyan-400">📞</span>
@@ -129,7 +142,11 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm">
+<<<<<<< HEAD
               © {year} YASDA SYSTEMS. All rights reserved.
+=======
+              © {year} YASDA SOFTWARE. All rights reserved.
+>>>>>>> origin/main
             </div>
             <div className="flex gap-6 text-sm">
               <Link to="/about" className="text-gray-400 hover:text-cyan-400 transition-colors">Privacy Policy</Link>

@@ -19,7 +19,11 @@ const About = () => {
   }, []);
 
   const timeline = [
+<<<<<<< HEAD
     { year: "2020", title: "INITIALIZATION", description: "YASDA SYSTEMS was forged in the peak of digital acceleration, targeting mission-critical enterprise gaps.", achievement: "FOUNDED" },
+=======
+    { year: "2020", title: "INITIALIZATION", description: "YASDA SOFTWARE was forged in the peak of digital acceleration, targeting mission-critical enterprise gaps.", achievement: "FOUNDED" },
+>>>>>>> origin/main
     { year: "2021", title: "INFRASTRUCTURE CORE", description: "Scaled to 5 veteran engineers and deployed our first Tier-1 SaaS backbone for global manufacturing.", achievement: "10+ SYSTEMS" },
     { year: "2022", title: "CLOUD ORCHESTRATION", description: "Achieved absolute AWS & Proxmox mastery with zero-downtime records across 12 high-traffic nodes.", achievement: "99.99% UPTIME" },
     { year: "2023", title: "NEURAL SYNTHESIS", description: "Pioneered ML-driven visual inspection for the manufacturing sector's 18+ precision machines.", achievement: "AI LEADER" },
@@ -56,7 +60,11 @@ const About = () => {
             </h2>
             <div className="h-2 w-40 bg-black mb-12" />
             <p className="text-xl font-bold leading-relaxed mb-12 uppercase tracking-tight">
+<<<<<<< HEAD
               AT YASDA, WE ELIMINATE THE FLUFF. OUR PHILOSOPHY IS ROOTED IN RADICAL ENGINEERING—CREATING CODEBASES THAT ARE AS ROBUST AS THEY ARE SCALABLE. FOR YASDA SYSTEMS, PRECISION IS NOT AN OPTION—IT IS THE CORE PROTOCOL.
+=======
+              AT YASDA, WE ELIMINATE THE FLUFF. OUR PHILOSOPHY IS ROOTED IN RADICAL ENGINEERING—CREATING CODEBASES THAT ARE AS ROBUST AS THEY ARE SCALABLE.
+>>>>>>> origin/main
             </p>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-8 border-2 border-black group hover:bg-black transition-colors">
@@ -80,7 +88,11 @@ const About = () => {
                 <div className="relative z-10 text-black font-bold translate-y-20 group-[.visible]:translate-y-0 transition-all duration-1000 delay-300">
                   <div className="space-y-6">
                     <p className="text-sm md:text-base leading-relaxed tracking-tight">
+<<<<<<< HEAD
                       <span className="bg-black text-cyan-400 px-2 py-0.5 mr-1">YASDA SYSTEMS</span> is an elite IT engineering collective dedicated to forging the high-performance digital backbones of the modern world. Specializing in <span className="italic font-black opacity-80">TECHNICAL BRUTALISM</span> and <span className="italic font-black opacity-80">RADICAL ENGINEERING</span>, we eliminate the unnecessary noise of conventional software development to focus on pure, mission-critical infrastructure.
+=======
+                      <span className="bg-black text-cyan-400 px-2 py-0.5 mr-1">YASDA SOFTWARE</span> is an elite IT engineering collective dedicated to forging the high-performance digital backbones of the modern world. Specializing in <span className="italic font-black opacity-80">TECHNICAL BRUTALISM</span> and <span className="italic font-black opacity-80">RADICAL ENGINEERING</span>, we eliminate the unnecessary noise of conventional software development to focus on pure, mission-critical infrastructure.
+>>>>>>> origin/main
                     </p>
                     <p className="text-[11px] md:text-[13px] leading-relaxed uppercase tracking-[0.2em] text-black/70 border-l-2 border-black/20 pl-4">
                       Our expertise spans complex system architecture, industrial automation, and enterprise-scale SaaS solutions, ensuring absolute reliability in high-pressure digital environments.
