@@ -197,10 +197,6 @@ const Home = () => {
           <div className="space-y-4">
             <div className="name-hero-container group">
               {/* HUD Brackets */}
-              <div className="hud-bracket hud-bracket-tl" />
-              <div className="hud-bracket hud-bracket-tr" />
-              <div className="hud-bracket hud-bracket-bl" />
-              <div className="hud-bracket hud-bracket-br" />
               
               {/* Background Layers */}
                 <h1
