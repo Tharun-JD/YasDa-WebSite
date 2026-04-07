@@ -61,11 +61,7 @@ const Navbar = ({ onNavClick }) => {
             <img src={logoIcon} alt="YASDA Icon" className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" />
             <div className="flex flex-col">
               <span className="text-white font-black text-xl tracking-[0.2em] uppercase leading-none group-hover:text-cyan-400 transition-colors">YASDA</span>
-<<<<<<< HEAD
               <span className="text-cyan-400 font-bold text-[9px] tracking-[0.6em] uppercase mt-1 opacity-80">SYSTEMS</span>
-=======
-              <span className="text-cyan-400 font-bold text-[9px] tracking-[0.6em] uppercase mt-1 opacity-80">SOFTWARE</span>
->>>>>>> origin/main
             </div>
           </Link>
 

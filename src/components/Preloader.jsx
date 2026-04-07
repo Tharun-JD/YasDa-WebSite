@@ -42,21 +42,13 @@ const Preloader = ({ onComplete, mode }) => {
   // Route-specific Content Configuration
   const getContent = () => {
     switch (mode) {
-<<<<<<< HEAD
       case 'nav-home': return { text: "YASDA SYSTEMS", accent: "text-cyan-400", overlay: "default-grid" };
-=======
-      case 'nav-home': return { text: "YASDA SOFTWARE", accent: "text-cyan-400", overlay: "default-grid" };
->>>>>>> origin/main
       case 'nav-about': return { text: "ABOUT", accent: "text-cyan-400", overlay: "about-scan" };
       case 'nav-services': return { text: "SERVICES", accent: "text-blue-500", overlay: "matrix-rain" };
       case 'nav-portfolio': return { text: "PORTFOLIO", accent: "text-white", overlay: "lens-shutter" };
       case 'nav-client': return { text: "CLIENTS", accent: "text-cyan-300", overlay: "star-field" };
       case 'nav-contact': return { text: "CONNECT", accent: "text-cyan-500", overlay: "wave-pulse" };
-<<<<<<< HEAD
       default: return { text: "YASDA SYSTEMS", accent: "text-cyan-400", overlay: "default-grid" };
-=======
-      default: return { text: "YASDA SOFTWARE", accent: "text-cyan-400", overlay: "default-grid" };
->>>>>>> origin/main
     }
   };
 
@@ -123,7 +115,6 @@ const Preloader = ({ onComplete, mode }) => {
         {/* Phase 2: Reveal Company Name with logo in background */}
         {phase >= 2 && phase < 3 && (
           <div className="flex flex-col items-center text-center relative z-10 w-full justify-center max-w-5xl mx-auto">
-            {/* Cinematic Background Logo - Refined Visibility */}
             <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-40 pointer-events-none overflow-hidden">
               <img
                 src={logoIcon}
@@ -136,11 +127,7 @@ const Preloader = ({ onComplete, mode }) => {
               <NameReveal config={config} mode={mode} progress={progress} />
 
               <p className="mt-30 text-white/10 font-bold uppercase tracking-[1em] text-[8px]">
-<<<<<<< HEAD
                 YASDA INDUSTRIAL OPERATING SYSTEMS v2.0
-=======
-                YASDA INDUSTRIAL OPERATING SYSTEM v2.0
->>>>>>> origin/main
               </p>
             </div>
           </div>

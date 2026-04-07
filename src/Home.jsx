@@ -40,14 +40,10 @@ const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
 
 const Home = () => {
   const [aboutVisible, setAboutVisible] = useState(false);
-<<<<<<< HEAD
   const [typedSystems, setTypedSystems] = useState('');
   const [startTyping, setStartTyping] = useState(false);
   const heroRef = useRef(null);
   const systemsWord = "SYSTEMS";
-=======
-  const heroRef = useRef(null);
->>>>>>> origin/main
 
   // Hero name dramatic reveal animation using anime.js
   useEffect(() => {
@@ -66,7 +62,6 @@ const Home = () => {
       duration: 1000,
       delay: 300,
     })
-<<<<<<< HEAD
       // Trigger typing after YASDA slams in
       .add({
         targets: {},
@@ -74,32 +69,16 @@ const Home = () => {
         complete: () => setStartTyping(true)
       }, '-=400')
       // Tagline fades up after SYSTEMS types out (7 chars * 120ms = 840ms)
-=======
-      // SOFTWARE slams in with overlap
-      .add({
-        targets: '#hero-software',
-        opacity: [0, 1],
-        translateY: [80, 0],
-        skewY: [6, 0],
-        duration: 1000,
-      }, '-=600')
-      // Tagline fades up
->>>>>>> origin/main
       .add({
         targets: '.hero-tagline',
         opacity: [0, 1],
         translateY: [24, 0],
         duration: 900,
-<<<<<<< HEAD
       }, '+=1000');
-=======
-      }, '-=300');
->>>>>>> origin/main
 
     return () => tl.pause();
   }, []);
 
-<<<<<<< HEAD
   // Typing logic for "SYSTEMS"
   useEffect(() => {
     if (!startTyping) return;
@@ -115,8 +94,6 @@ const Home = () => {
   }, [startTyping]);
 
 
-=======
->>>>>>> origin/main
   // Interactive Hero Tracking (3D Tilt)
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -218,22 +195,14 @@ const Home = () => {
         {/* Layer 3: Cinematic Text Entrance */}
         <div className="relative z-20 text-center px-6 preserve-3d" ref={heroRef}>
           <div className="space-y-4">
-<<<<<<< HEAD
             <div className="name-hero-container group">
               {/* HUD Brackets */}
-              <div className="hud-bracket hud-bracket-tl" />
-              <div className="hud-bracket hud-bracket-tr" />
-              <div className="hud-bracket hud-bracket-bl" />
-              <div className="hud-bracket hud-bracket-br" />
               
               {/* Background Layers */}
-              <div className="aura-glow-name" />
-              <div className="name-hero-scan" />
-
-              <h1
-                className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center name-glow-pulse"
-                style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
-              >
+                <h1
+                  className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
+                  style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
+                >
                 {/* YASDA */}
                 <span
                   id="hero-yasda"
@@ -249,35 +218,11 @@ const Home = () => {
                   style={{ color: '#22d3ee' }}
                 >
                   {typedSystems}
-                  <span className="typing-cursor" style={{ visibility: startTyping ? 'visible' : 'hidden' }} />
                 </span>
 
               </h1>
             </div>
 
-=======
-            <h1
-              className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
-              style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
-            >
-              {/* YASDA */}
-              <span
-                id="hero-yasda"
-                className="hero-word block relative"
-                style={{ color: 'white' }}
-              >
-                YASDA
-              </span>
-              {/* SOFTWARE */}
-              <span
-                id="hero-software"
-                className="hero-word block relative"
-                style={{ color: '#22d3ee', textShadow: '0 0 40px rgba(34,211,238,0.4)' }}
-              >
-                SOFTWARE
-              </span>
-            </h1>
->>>>>>> origin/main
             <div className="hero-tagline flex items-center justify-center gap-6 mt-12">
               <div className="h-px w-24 bg-cyan-400/50" />
               <p className="text-xl md:text-2xl font-black uppercase tracking-[0.5em] text-white/50 italic">"We don't follow trends. We build the future."</p>
@@ -285,24 +230,11 @@ const Home = () => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-      
-=======
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 animate-bounce-subtle">
-          <div className="w-1 h-16 bg-gradient-to-b from-cyan-400 to-transparent opacity-50" />
-        </div>
->>>>>>> origin/main
       </section>
 
       {/* About Section - Asymmetric Grid */}
       <section id="about-section" className="py-24 md:py-48 px-6 observe-section relative">
-<<<<<<< HEAD
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 -skew-x-12 -z-10" />
-=======
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-white/[0.02] -skew-x-12 -z-10" />
->>>>>>> origin/main
 
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -317,11 +249,7 @@ const Home = () => {
               </h2>
               <div className="space-y-8 text-gray-400 text-lg leading-relaxed">
                 <p>
-<<<<<<< HEAD
                   <b className='text-cyan-400 font-extrabold text-xl tracking-wider animate-pulse'>YASDA SYSTEMS</b> is an elite engineering collective forged in 2021. We eliminate the noise of modern software delivery, focusing on pure, high-performance digital infrastructure.
-=======
-                  <b className='text-cyan-400 font-extrabold text-xl tracking-wider animate-pulse'>YASDA SOFTWARE</b> is an elite engineering collective forged in 2021. We eliminate the noise of modern software delivery, focusing on pure, high-performance digital infrastructure.
->>>>>>> origin/main
                 </p>
                 <p>
                   Our DNA is built on <strong className="text-white">Radical Reliability</strong>—where mission-critical resilience is the baseline, and extraordinary precision is the result.
