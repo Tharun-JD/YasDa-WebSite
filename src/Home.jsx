@@ -5,10 +5,12 @@ import CountUp from './components/CountUp';
 import GlowCard from './components/GlowCard';
 import logoIcon from './assets/logo1.png';
 
-const LetterReveal = ({ text, delay, color = "white", onComplete }) => {
+const LetterReveal = ({ text, delay, trigger = true, color = "white", onComplete }) => {
   const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
+    if (!trigger) return;
+
     const timeout = setTimeout(() => {
       setIsRevealed(true);
       if (onComplete) {
@@ -16,7 +18,7 @@ const LetterReveal = ({ text, delay, color = "white", onComplete }) => {
       }
     }, delay);
     return () => clearTimeout(timeout);
-  }, [delay, onComplete]);
+  }, [delay, onComplete, trigger]);
 
   return (
     <span className={`inline-flex transition-all duration-1000 ease-out ${isRevealed ? 'tracking-widest' : 'tracking-[-0.2em]'}`}>
@@ -205,13 +207,12 @@ const Home = () => {
                 />
                 
                 {/* SYSTEMS Reveal */}
-                {startSystems && (
-                  <LetterReveal 
-                    text="SYSTEMS" 
-                    delay={100} 
-                    color="#22d3ee" 
-                  />
-                )}
+                <LetterReveal 
+                  text="SYSTEMS" 
+                  delay={100} 
+                  trigger={startSystems}
+                  color="#22d3ee" 
+                />
 
               </h1>
             </div>
