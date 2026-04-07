@@ -774,7 +774,7 @@ html {
 /* ===== Hero Name Enhancement (Kinetic HUD) ===== */
 
 .name-hero-container {
-  @apply relative py-12 px-20 bg-black/40 backdrop-blur-md mb-20;
+  @apply relative py-12 px-20 mb-20;
 }
 
 .name-hero-container::before {

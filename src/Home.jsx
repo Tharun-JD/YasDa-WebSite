@@ -203,13 +203,10 @@ const Home = () => {
               <div className="hud-bracket hud-bracket-br" />
               
               {/* Background Layers */}
-              <div className="aura-glow-name" />
-              <div className="name-hero-scan" />
-
-              <h1
-                className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center name-glow-pulse"
-                style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
-              >
+                <h1
+                  className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
+                  style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
+                >
                 {/* YASDA */}
                 <span
                   id="hero-yasda"
@@ -225,7 +222,6 @@ const Home = () => {
                   style={{ color: '#22d3ee' }}
                 >
                   {typedSystems}
-                  <span className="typing-cursor" style={{ visibility: startTyping ? 'visible' : 'hidden' }} />
                 </span>
 
               </h1>
