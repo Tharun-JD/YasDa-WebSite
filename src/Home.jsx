@@ -5,6 +5,43 @@ import CountUp from './components/CountUp';
 import GlowCard from './components/GlowCard';
 import logoIcon from './assets/logo1.png';
 
+const LetterReveal = ({ text, delay, trigger = true, color = "white", onComplete }) => {
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  useEffect(() => {
+    if (!trigger) return;
+
+    const timeout = setTimeout(() => {
+      setIsRevealed(true);
+      if (onComplete) {
+        setTimeout(onComplete, 800); // Trigger next sequence after this one is mostly settled
+      }
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [delay, onComplete, trigger]);
+
+  return (
+    <span className={`inline-flex transition-all duration-1000 ease-out ${isRevealed ? 'tracking-widest' : 'tracking-[-0.2em]'}`}>
+      {text.split('').map((char, i) => (
+        <span 
+          key={i} 
+          className="inline-block transition-all"
+          style={{ 
+            color,
+            transitionDuration: '1500ms',
+            transitionTimingFunction: 'cubic-bezier(0.1, 1, 0.1, 1)',
+            transitionDelay: `${i * 40}ms`,
+            opacity: isRevealed ? 1 : 0,
+            transform: isRevealed ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
+          }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </span>
+  );
+};
+
 const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
   const barRef = useRef(null);
 
@@ -40,58 +77,26 @@ const SkillBar = ({ name, percentage, description, isVisible, delay }) => {
 
 const Home = () => {
   const [aboutVisible, setAboutVisible] = useState(false);
-  const [typedSystems, setTypedSystems] = useState('');
-  const [startTyping, setStartTyping] = useState(false);
+  const [startSystems, setStartSystems] = useState(false);
   const heroRef = useRef(null);
-  const systemsWord = "SYSTEMS";
 
   // Hero name dramatic reveal animation using anime.js
   useEffect(() => {
     // Set initial hidden state
-    anime.set('.hero-word', { opacity: 0, translateY: 80, skewY: 6 });
     anime.set('.hero-tagline', { opacity: 0, translateY: 24 });
 
     const tl = anime.timeline({ easing: 'easeOutExpo' });
 
-    // YASDA slams in from below
     tl.add({
-      targets: '#hero-yasda',
+      targets: '.hero-tagline',
       opacity: [0, 1],
-      translateY: [80, 0],
-      skewY: [6, 0],
-      duration: 1000,
-      delay: 300,
-    })
-      // Trigger typing after YASDA slams in
-      .add({
-        targets: {},
-        duration: 0,
-        complete: () => setStartTyping(true)
-      }, '-=400')
-      // Tagline fades up after SYSTEMS types out (7 chars * 120ms = 840ms)
-      .add({
-        targets: '.hero-tagline',
-        opacity: [0, 1],
-        translateY: [24, 0],
-        duration: 900,
-      }, '+=1000');
+      translateY: [24, 0],
+      duration: 1200,
+      delay: 2500, // Wait for letter reveals to complete
+    });
 
     return () => tl.pause();
   }, []);
-
-  // Typing logic for "SYSTEMS"
-  useEffect(() => {
-    if (!startTyping) return;
-    
-    let index = 0;
-    const interval = setInterval(() => {
-      setTypedSystems(systemsWord.slice(0, index + 1));
-      index++;
-      if (index >= systemsWord.length) clearInterval(interval);
-    }, 120);
-    
-    return () => clearInterval(interval);
-  }, [startTyping]);
 
 
   // Interactive Hero Tracking (3D Tilt)
@@ -170,16 +175,6 @@ const Home = () => {
     <main className="text-white selection:bg-cyan-400 selection:text-black overflow-x-hidden perspective-3d">
       {/* Cinematic 3D Hero Section */}
       <section className="h-screen relative flex items-center justify-center overflow-hidden preserve-3d">
-        {/* Layer 0: Blur White Circle */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <div 
-            className="absolute w-[1000px] h-[1000px] rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%)',
-              filter: 'blur(60px)'
-            }}
-          />
-        </div>
 
         {/* Layer 1: 3D Grid Floor */}
         <div className="absolute inset-x-0 bottom-0 z-0 pointer-events-none h-1/2">
@@ -203,27 +198,26 @@ const Home = () => {
                   className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
                   style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
                 >
-                {/* YASDA */}
-                <span
-                  id="hero-yasda"
-                  className="hero-word block relative"
-                  style={{ color: 'white' }}
-                >
-                  YASDA
-                </span>
-                {/* SYSTEMS */}
-                <span
-                  id="hero-systems"
-                  className="block relative min-h-[1em]"
-                  style={{ color: '#22d3ee' }}
-                >
-                  {typedSystems}
-                </span>
+
+                {/* YASDA Reveal */}
+                <LetterReveal 
+                  text="YASDA" 
+                  delay={500} 
+                  onComplete={() => setStartSystems(true)} 
+                />
+                
+                {/* SYSTEMS Reveal */}
+                <LetterReveal 
+                  text="SYSTEMS" 
+                  delay={100} 
+                  trigger={startSystems}
+                  color="#22d3ee" 
+                />
 
               </h1>
             </div>
 
-            <div className="hero-tagline flex items-center justify-center gap-6 mt-12">
+            <div className="hero-tagline flex items-center justify-center gap-6 mt-4">
               <div className="h-px w-24 bg-cyan-400/50" />
               <p className="text-xl md:text-2xl font-black uppercase tracking-[0.5em] text-white/50 italic">"We don't follow trends. We build the future."</p>
               <div className="h-px w-24 bg-cyan-400/50" />
