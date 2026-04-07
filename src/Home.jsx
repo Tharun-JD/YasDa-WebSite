@@ -6,47 +6,30 @@ import GlowCard from './components/GlowCard';
 import logoIcon from './assets/logo1.png';
 
 const LetterReveal = ({ text, delay, color = "white", onComplete }) => {
-  const [displayText, setDisplayText] = useState(text.split('').map(() => ''));
   const [isRevealed, setIsRevealed] = useState(false);
-  const chars = "01#$%&<>_[]{}|@*";
 
   useEffect(() => {
-    let timeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
       setIsRevealed(true);
-      text.split('').forEach((char, i) => {
-        let count = 0;
-        const maxShuffles = 8 + i * 2;
-        const interval = setInterval(() => {
-          setDisplayText(prev => {
-            const next = [...prev];
-            next[i] = chars[Math.floor(Math.random() * chars.length)];
-            return next;
-          });
-          count++;
-          if (count > maxShuffles) {
-            clearInterval(interval);
-            setDisplayText(prev => {
-              const next = [...prev];
-              next[i] = char;
-              return next;
-            });
-            if (i === text.length - 1 && onComplete) onComplete();
-          }
-        }, 60);
-      });
+      if (onComplete) {
+        setTimeout(onComplete, 800); // Trigger next sequence after this one is mostly settled
+      }
     }, delay);
     return () => clearTimeout(timeout);
-  }, [text, delay, onComplete]);
+  }, [delay, onComplete]);
 
   return (
-    <span className="inline-flex">
-      {displayText.map((char, i) => (
+    <span className={`inline-flex transition-all duration-1000 ease-out ${isRevealed ? 'tracking-widest' : 'tracking-[-0.2em]'}`}>
+      {text.split('').map((char, i) => (
         <span 
           key={i} 
-          className={`transition-all duration-300 ${isRevealed ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-150 blur-md'}`}
-          style={{ color: isRevealed ? color : '#22d3ee' }}
+          className={`transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1) ${isRevealed ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-xl'}`}
+          style={{ 
+            color,
+            transitionDelay: `${i * 60}ms`
+          }}
         >
-          {char || '\u00A0'}
+          {char === ' ' ? '\u00A0' : char}
         </span>
       ))}
     </span>
@@ -219,6 +202,13 @@ const Home = () => {
                   className="font-[1000] italic uppercase tracking-[-0.05em] flex flex-col items-center"
                   style={{ fontSize: 'clamp(3rem, 12vw, 10rem)', lineHeight: 0.85 }}
                 >
+                {/* Light Sweep (Professional Overlay) */}
+                {startSystems && (
+                  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+                    <div className="w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent animate-light-sweep" style={{ animationDelay: '800ms' }} />
+                  </div>
+                )}
+
                 {/* YASDA Reveal */}
                 <LetterReveal 
                   text="YASDA" 

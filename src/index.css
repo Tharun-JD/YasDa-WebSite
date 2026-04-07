@@ -199,7 +199,18 @@
 }
 
 .name-hero-container {
-  @apply py-4 mb-4;
+  @apply relative py-4 px-20 mb-4 transition-all duration-700;
+}
+
+@keyframes light-sweep {
+  0% { transform: translateX(-100%) skewX(-20deg); opacity: 0; }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.5; }
+  100% { transform: translateX(200%) skewX(-20deg); opacity: 0; }
+}
+
+.animate-light-sweep {
+  animation: light-sweep 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Hero tagline fade-in */
