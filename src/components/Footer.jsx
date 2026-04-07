@@ -42,8 +42,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold text-cyan-400">YASDA SYSTEM</span>
+              <span className="text-2xl font-bold text-cyan-400">YASDA SYSTEMS</span>
             </Link>
+
             <p className="text-gray-400 mb-6 leading-relaxed text-sm">
               Transforming businesses through innovative software solutions. We specialize in web development, mobile apps, cloud infrastructure, and DevOps to help companies scale and succeed.
             </p>
@@ -128,7 +129,7 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm">
-              © {year} YASDA SYSTEM. All rights reserved.
+              © {year} YASDA SYSTEMS. All rights reserved.
             </div>
             <div className="flex gap-6 text-sm">
               <Link to="/about" className="text-gray-400 hover:text-cyan-400 transition-colors">Privacy Policy</Link>

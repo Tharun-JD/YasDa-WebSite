@@ -5,7 +5,7 @@ const GLITCH_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
 const NameReveal = ({ config, mode, progress }) => {
     const containerRef = useRef(null);
     const isInitialBrand = mode === 'initial' || mode === 'nav-home' || !mode;
-    const text = config?.text || 'YASDA SYSTEM';
+    const text = config?.text || 'YASDA SYSTEMS';
     const words = text.split(' ');
 
     const [displayChars, setDisplayChars] = useState(() =>

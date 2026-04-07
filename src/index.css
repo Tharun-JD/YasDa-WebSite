@@ -770,3 +770,71 @@ html {
 .animate-twinkle {
   animation: twinkle 2s ease-in-out infinite;
 }
+
+/* ===== Hero Name Enhancement (Kinetic HUD) ===== */
+
+.name-hero-container {
+  @apply relative py-12 px-20 bg-black/40 backdrop-blur-md mb-20 group;
+}
+
+.name-hero-container::before {
+  content: "";
+  @apply absolute inset-0 opacity-10 pointer-events-none;
+  background-image: 
+    linear-gradient(rgba(34, 211, 238, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.hud-bracket {
+  @apply absolute w-8 h-8 border-cyan-400 opacity-40 transition-all duration-700 group-hover:opacity-100 group-hover:w-12 group-hover:h-12;
+}
+
+.hud-bracket-tl { @apply top-0 left-0 border-t-4 border-l-4; }
+.hud-bracket-tr { @apply top-0 right-0 border-t-4 border-r-4; }
+.hud-bracket-bl { @apply bottom-0 left-0 border-b-4 border-l-4; }
+.hud-bracket-br { @apply bottom-0 right-0 border-b-4 border-r-4; }
+
+.aura-glow-name {
+  @apply absolute inset-0 -z-10 pointer-events-none opacity-40;
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.25) 0%, transparent 70%);
+  filter: blur(40px);
+  animation: aura-pulse 4s ease-in-out infinite;
+}
+
+@keyframes aura-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+.name-hero-scan {
+  @apply absolute left-0 w-full h-[2px] bg-cyan-400/20 z-0 pointer-events-none;
+  animation: scan-vertical 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes scan-vertical {
+  0% { top: 0%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.name-glow-pulse {
+  animation: logo-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes logo-glow-pulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
+  50% { text-shadow: 0 0 50px rgba(34,211,238,0.7), 0 0 100px rgba(34,211,238,0.2); }
+}
+
+/* ===== Typewriter Effect ===== */
+.typing-cursor {
+  @apply inline-block ml-1 w-[0.5em] h-[1em] bg-cyan-400 align-middle;
+  animation: cursor-blink 0.8s step-end infinite;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
